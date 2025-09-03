@@ -5,8 +5,8 @@ import { List } from "@phosphor-icons/react"; // ícono del menú (hamburger)
 
 export default function Header() {
   return (
-    <header className="fixed top-0 left-0 z-50 w-full bg-black/30 backdrop-blur-sm">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 md:px-8">
+    <header className="fixed top-0 left-0 z-50 w-full bg-[#040505] backdrop-blur-sm">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4.5 md:px-8">
         
         {/* Logo */}
         <div className="flex items-center gap-2">
