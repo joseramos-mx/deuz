@@ -5,6 +5,7 @@ import ValuesGrid from "@/components/Values";
 import ServicesSection from "@/components/Services";
 import QuoteWizard from "@/components/Quotes";
 import GroupMarquees from "@/components/GroupMarquees";
+import ProjectsCarousel from "@/components/Projects";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <ValuesGrid />
       <ServicesSection />
       <QuoteWizard />
+      <ProjectsCarousel />
       
     </div>
   );
