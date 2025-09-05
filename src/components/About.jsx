@@ -4,31 +4,36 @@ import Image from "next/image";
 import { ArrowRight, Asterisk } from "@phosphor-icons/react";
 
 const teamImages = [
-    {
-      src: "/socios/manuel.jpg",
-      alt: "Manuel Bueno",
-      name: "Manuel Bueno",
-      role: "Operaciones",
-    },
-    {
-      src: "/socios/sida.jpg",
-      alt: "José Ramón Sida",
-      name: "José Ramón Sida",
-      role: "Director General",
-    },
-    {
-      src: "/socios/arreola.jpg",
-      alt: "Cruz Arreola",
-      name: "Cruz Arreola",
-      role: "Proyectos",
-    },
-  ];
-  
+  {
+    src: "/socios/manuel.jpg",
+    alt: "Manuel Bueno",
+    name: "Manuel Bueno",
+    role: "Director General",
+  },
+  {
+    src: "/socios/sida.jpg",
+    alt: "José Ramón Sida",
+    name: "José Ramón Sida",
+    role: "Socio fundador",
+  },
+  {
+    src: "/socios/arreola.jpg",
+    alt: "Cruz Arreola",
+    name: "Cruz Arreola",
+    role: "Socio fundador",
+  },
+  {
+    src: "/socios/nuevo.jpg",
+    alt: "Nuevo Integrante",
+    name: "Nuevo Integrante",
+    role: "Socio fundador",
+  },
+];
 
 export default function TeamSectionVisionaries() {
   return (
     <section id="equipo" className="relative bg-white">
-      {/* líneas decorativas (igual que antes) */}
+      {/* líneas decorativas */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute left-20 top-0 bottom-0 w-px bg-neutral-200" />
         <div className="absolute right-20 top-0 bottom-0 w-px bg-neutral-200" />
@@ -62,7 +67,7 @@ export default function TeamSectionVisionaries() {
           </h2>
 
           <p className="mt-4 max-w-md text-[15px] leading-relaxed text-neutral-600">
-          <span className="font-bold">DEUZ GROUP</span> es una comercializadora nacional que agrupa a Grupo Logo (construcción e infraestructura) y Maelsa (electrificación e ingeniería eléctrica), liderada por tres socios: Cruz Arreola, José Ramón Sida y Manuel Bueno. Su objetivo es expandir la operación de estas empresas a nivel nacional bajo una misma bandera comercial, operando como un holding sin carga operativa directa, que centraliza las ventas y distribución de proyectos, subcontratando a sus empresas aliadas para la ejecución.
+            <span className="font-bold">DEUZ GROUP</span> es una comercializadora nacional que agrupa a Grupo Logo (construcción e infraestructura) y Maelsa (electrificación e ingeniería eléctrica), liderada por tres socios: Cruz Arreola, José Ramón Sida y Manuel Bueno. Su objetivo es expandir la operación de estas empresas a nivel nacional bajo una misma bandera comercial, operando como un holding sin carga operativa directa, que centraliza las ventas y distribución de proyectos, subcontratando a sus empresas aliadas para la ejecución.
           </p>
 
           <a
@@ -84,25 +89,24 @@ export default function TeamSectionVisionaries() {
                   className="relative snap-start shrink-0 w-[80%] aspect-[4/5] overflow-hidden rounded-xl bg-neutral-100"
                 >
                   <Image src={img.src} alt={img.alt} fill className="object-cover" />
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent p-4">
+                    <h3 className="text-white font-semibold">{img.name}</h3>
+                    <p className="text-white/80 text-sm">{img.role}</p>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* DESKTOP: tres columnas que igualan la altura del texto */}
-          <div className="hidden md:flex gap-4 h-full">
+          {/* DESKTOP: cuatro columnas */}
+          <div className="hidden md:grid grid-cols-4 gap-4 h-full">
             {teamImages.map((img, i) => (
-              <div key={i} className="relative flex-1 overflow-hidden rounded-md bg-neutral-100">
-                {/* hace que cada columna llene la altura del contenedor */}
-                <div className="absolute inset-0">
-                  <Image src={img.src} alt={img.alt} fill className="object-cover" />
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent p-4">
+              <div key={i} className="relative overflow-hidden rounded-md bg-neutral-100">
+                <Image src={img.src} alt={img.alt} fill className="object-cover" />
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent p-4">
                   <h3 className="text-white font-semibold text-sm sm:text-base">{img.name}</h3>
                   <p className="text-white/80 text-xs sm:text-sm">{img.role}</p>
                 </div>
-                </div>
-                {/* para asegurar altura mínima si el texto es muy corto en pantallas grandes */}
-                <div className="invisible">.</div>
               </div>
             ))}
           </div>

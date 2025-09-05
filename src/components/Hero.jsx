@@ -17,13 +17,16 @@ export default function Hero() {
         className="absolute inset-0 -z-30 bg-[linear-gradient(180deg,rgba(3,4,4,0.9),rgba(3,4,4,0.98)),radial-gradient(1200px_600px_at_90%_-10%,rgba(7,40,20,0.25),transparent_70%)]"
       />
 
-      {/* --- decorative lines (like the reference) --- */}
+      {/* --- transición blanca al fondo --- */}
+      <div
+        aria-hidden
+        className="absolute bottom-0 left-0 right-0 h-40 -z-10 bg-gradient-to-t from-white via-white/70 to-transparent"
+      />
+
+      {/* --- decorative lines --- */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-        {/* top horizontal */}
         <div className="absolute left-0 right-0 top-20 h-px bg-white/10" />
-        {/* left vertical */}
         <div className="absolute left-[11rem] top-0 bottom-0 w-px bg-white/10" />
-        {/* right vertical */}
         <div className="absolute right-[11rem] top-0 bottom-0 w-px bg-white/10" />
       </div>
 
@@ -56,9 +59,9 @@ export default function Hero() {
           </Button>
         </div>
 
-        {/* hero image (rounded, with side margin – does not touch screen edges) */}
+        {/* hero image */}
         <div className="relative mx-auto mt-16 w-full max-w-6xl px-2 sm:px-4 md:px-6 lg:px-8">
-          <div className="relative overflow-hidden rounded-[36px] shadow-2xl ring-1 ring-white/10">
+          <div className="relative overflow-hidden rounded-[36px] ring-1 ring-white/10">
             <Image
               src="/images/21.jpg"
               alt="Edificio moderno de fachada metálica"
