@@ -61,7 +61,7 @@ export default function QuoteWizard() {
 
   return (
     <section id="cotizador" className="relative bg-white py-16">
-      <div className="mx-auto max-w-5xl px-6 md:px-8">
+      <div className="mx-auto max-w-7xl px-6 md:px-8">
         {/* Encabezado */}
         <div className="mb-8 flex items-end justify-between gap-4">
           <div>

@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 
 export default function Hero() {
   return (
-    <section className="relative isolate overflow-hidden bg-[#141414]">
+    <section id="inicio" className="relative isolate overflow-hidden bg-[#141414]">
       {/* --- background gradients --- */}
       <div
         aria-hidden
@@ -63,12 +63,12 @@ export default function Hero() {
         <div className="relative mx-auto mt-16 w-full max-w-6xl px-2 sm:px-4 md:px-6 lg:px-8">
           <div className="relative overflow-hidden rounded-[36px] ring-1 ring-white/10">
             <Image
-              src="/images/21.jpg"
-              alt="Edificio moderno de fachada metálica"
+              src="/photos/IMG_8799.webp"
+              alt="retroexcavadora en servicio de construcción"
               width={2400}
-              height={1400}
+              height={800}
               priority
-              className="h-auto w-full object-cover"
+              className="h-[400px] w-full object-cover"
             />
           </div>
         </div>
