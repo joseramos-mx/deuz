@@ -9,8 +9,43 @@ const montserrat = Montserrat({
 });
 
 export const metadata = {
-  title: "DEUZ",
-  description: "Grupo constructor",
+  title: {
+    default: "DEUZ | Grupo Empresarial",
+    template: "%s | Deuz Constructora",
+  },
+  description: "Obras que trascienden. Grupo empresarial en Durango y México.",
+  icons: {
+    icon: "/fav/favicon.ico",
+    shortcut: "/fav/favicon-16x16.png",
+    apple: "/fav/apple-touch-icon.png",
+  },
+  openGraph: {
+    title: "Deuz Constructora",
+    description: "Obras que trascienden en México.",
+    url: "https://tusitio.com",
+    siteName: "Deuz Constructora",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Deuz Constructora",
+      },
+    ],
+    locale: "es_MX",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Deuz Constructora",
+    description: "Obras que trascienden en México.",
+    images: ["/og-image.png"],
+  },
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    themeColor: "#E50914",
+  },
 };
 
 export default function RootLayout({ children }) {
