@@ -22,14 +22,14 @@ export const metadata = {
   openGraph: {
     title: "Deuz Constructora",
     description: "Obras que trascienden en México.",
-    url: "https://tusitio.com",
-    siteName: "Deuz Constructora",
+    url: "https://deuzmx.com",
+    siteName: "Deuz Grupo Empresarial",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Deuz Constructora",
+        alt: "Deuz Grupo Empresarial",
       },
     ],
     locale: "es_MX",
@@ -37,7 +37,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Deuz Constructora",
+    title: "Grupo Empresarial",
     description: "Obras que trascienden en México.",
     images: ["/og-image.png"],
   },
