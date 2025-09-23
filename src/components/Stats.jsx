@@ -21,10 +21,10 @@ export default function Stats() {
     <section className="relative bg-white h-[300px] pt-[100px]">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-x-10 gap-y-12">
-          <Kpi value="+1k"    top="Proyectos"                     bold="entregados" />
-          <Kpi value="+100"   top="Clientes"                      bold="satisfechos" />
-          <Kpi value="+300km" top="de construcción"               bold="finalizados" />
-          <Kpi value="+4000m²" top="Construidos"                  bold="excelente" />
+          <Kpi value="+30"      top="Años de"                      bold="experiencia" />
+          <Kpi value="+7,000"   top="Proyectos"                    bold="entregados" />
+          <Kpi value="+130"     top="de máquinas especializadas"   bold="propias" />
+          <Kpi value="+150"  top="ferreteras"                  bold="abastecidas" />
         </div>
       </div>
     </section>

@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
     
     <html lang="es" className={montserrat.variable}>
       
-      <body className="font-sans antialiased">{children}
+      <body className="font-sans antialiased overflow-x-clip">{children}
       <Header />
       <Footer />
       </body>

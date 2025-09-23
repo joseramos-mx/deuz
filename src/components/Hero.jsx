@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
 export default function Hero() {
@@ -10,11 +9,11 @@ export default function Hero() {
       {/* --- background gradients --- */}
       <div
         aria-hidden
-        className="absolute inset-0 -z-20 bg-[radial-gradient(900px_500px_at_50%_55%,rgba(255,0,32,0.35),transparent_60%)]"
+        className="overflow-hidden absolute inset-0 -z-20 bg-[radial-gradient(900px_500px_at_50%_55%,rgba(255,0,32,0.35),transparent_60%)]"
       />
       <div
         aria-hidden
-        className="absolute inset-0 -z-30 bg-[linear-gradient(180deg,rgba(3,4,4,0.9),rgba(3,4,4,0.98)),radial-gradient(1200px_600px_at_90%_-10%,rgba(7,40,20,0.25),transparent_70%)]"
+        className="overflow-hidden absolute inset-0 -z-30 bg-[linear-gradient(180deg,rgba(3,4,4,0.9),rgba(3,4,4,0.98)),radial-gradient(1200px_600px_at_90%_-10%,rgba(7,40,20,0.25),transparent_70%)]"
       />
 
       {/* --- transición blanca al fondo --- */}
@@ -32,14 +31,28 @@ export default function Hero() {
 
       {/* --- content --- */}
       <div className="relative mx-auto max-w-7xl px-6 pt-28 pb-8 text-center md:px-8 lg:pt-36">
-        <Badge className="mx-auto w-fit rounded-full border border-red-800/40 bg-red-900/30 px-3 py-1 text-[13px] font-medium tracking-wide text-red-200">
-          La constructora #1 en Durango
-        </Badge>
+        
+        {/* Banda con logo y subtítulo */}
+        <div className="mx-auto w-fit flex flex-col items-center">
+          <Image
+            src="/logo.svg" // 👈 aquí va el logo de DEUZ
+            alt="Logo DEUZ"
+            width={140}
+            height={50}
+            priority
+          />
+          <p className="mt-2 text-sm font-medium tracking-wide text-red-200 uppercase">
+            Grupo empresarial
+          </p>
+        </div>
 
+        {/* Título principal */}
         <h1 className="mt-6 leading-[0.95] tracking-tight text-white">
-          <span className="block text-4xl sm:text-6xl md:text-7xl font-sans">Obras que</span>
-          <span className="block bg-gradient-to-b from-[#FF2A2A] to-[#B00012] bg-clip-text text-transparent text-5xl sm:text-7xl md:text-8xl font-sans font-black">
-            trascienden
+          <span className="block text-4xl sm:text-6xl md:text-7xl font-sans uppercase">
+            OBRAS QUE
+          </span>
+          <span className="block bg-gradient-to-b from-[#FF2A2A] to-[#B00012] bg-clip-text text-transparent text-5xl sm:text-7xl md:text-8xl font-sans font-black uppercase">
+            TRASCIENDEN
           </span>
         </h1>
 
@@ -63,12 +76,12 @@ export default function Hero() {
         <div className="relative mx-auto mt-16 w-full max-w-6xl px-2 sm:px-4 md:px-6 lg:px-8">
           <div className="relative overflow-hidden rounded-[36px] ring-1 ring-white/10">
             <Image
-              src="/photos/IMG_8799.webp"
+              src="/photos/hero.png"
               alt="retroexcavadora en servicio de construcción"
               width={2400}
               height={800}
               priority
-              className="h-[400px] w-full object-cover"
+              className="h-[550px] w-full object-cover"
             />
           </div>
         </div>

@@ -1,23 +1,28 @@
 "use client";
 
-import { Handshake, SealCheck, Hammer, ShieldCheck } from "@phosphor-icons/react";
+import {
+  Factory,
+  Crane,
+  UsersThree,
+  Heart,
+} from "@phosphor-icons/react";
 
 const values = [
   {
-    title: "Espíritu de servicio",
-    icon: <Handshake size={32} weight="duotone" className="text-red-500" />,
+    title: "Fabricamos nuestros propios insumos",
+    icon: <Factory size={32} weight="duotone" className="text-red-500" />,
   },
   {
-    title: "Transparencia en costos",
-    icon: <SealCheck size={32} weight="duotone" className="text-red-500" />,
+    title: "Usamos nuestra propia maquinaria",
+    icon: <Crane size={32} weight="duotone" className="text-red-500" />,
   },
   {
-    title: "Ejecución impecable",
-    icon: <Hammer size={32} weight="duotone" className="text-red-500" />,
+    title: "Construimos con nuestros colaboradores",
+    icon: <UsersThree size={32} weight="duotone" className="text-red-500" />,
   },
   {
-    title: "Confianza y ética",
-    icon: <ShieldCheck size={32} weight="duotone" className="text-red-500" />,
+    title: "Reinvertimos el 60% en desarrollo social",
+    icon: <Heart size={32} weight="duotone" className="text-red-500" />,
   },
 ];
 
@@ -26,7 +31,7 @@ export default function ValuesGrid() {
     <section id="valores" className="relative bg-white py-10">
       <div className="mx-auto max-w-7xl px-6 md:px-8">
         <h2 className="text-center text-4xl md:text-5xl font-black text-neutral-900">
-          Nuestros <span className="italic font-medium">valores</span>
+          Oferta de <span className="italic font-medium">valor</span>
           <span className="text-red-500">.</span>
         </h2>
 
@@ -41,7 +46,7 @@ export default function ValuesGrid() {
               </div>
               <h3 className="text-lg font-semibold text-neutral-900">{val.title}</h3>
 
-              {/* Decor glow */}
+              {/* Glow decorativo al hover */}
               <div className="absolute inset-0 rounded-xl bg-gradient-to-b from-transparent via-transparent to-red-50 opacity-0 group-hover:opacity-100 transition" />
             </div>
           ))}

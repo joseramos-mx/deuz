@@ -8,6 +8,7 @@ import GroupMarquees from "@/components/GroupMarquees";
 import ProjectsCarousel from "@/components/Projects";
 import TestimonialsStream from "../components/Reviews";
 import CTASection from "@/components/CTA";
+import MapaMexico from "@/components/mexico";
 
 export default function Home() {
   return (
@@ -20,7 +21,7 @@ export default function Home() {
       <ServicesSection />
       <QuoteWizard />
       <ProjectsCarousel />
-      <TestimonialsStream />
+      <MapaMexico/>
       <CTASection />
       
     </div>

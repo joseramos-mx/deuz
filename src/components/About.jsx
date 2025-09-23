@@ -9,7 +9,7 @@ const teamImages = [
     src: "/socios/manuel.jpg",
     alt: "Manuel Bueno",
     name: "Manuel Bueno",
-    role: "Director General",
+    role: "Director General y socio",
     bio: "Más de 15 años liderando proyectos de infraestructura, vivienda y obra industrial a gran escala, con foco en transparencia y ejecución impecable.",
   },
   {
@@ -27,9 +27,9 @@ const teamImages = [
     bio: "Experto en dirección de obras urbanas y eléctricas. Integra equipos multidisciplinarios para entregar valor en tiempo y forma.",
   },
   {
-    src: "/socios/nuevo.jpg",
-    alt: "Nuevo Integrante",
-    name: "Nuevo Integrante",
+    src: "/socios/arreola.jpg",
+    alt: "Rodolfo Arrellano",
+    name: "Rodolfo Arrellano",
     role: "Socio fundador",
     bio: "Estratega de alto impacto. Alinea visión comercial y operación para escalar proyectos con estándares de clase mundial.",
   },
@@ -96,12 +96,12 @@ export default function TeamSectionVisionaries() {
             <span className="font-bold">DEUZ GROUP</span> es una comercializadora nacional que agrupa a Grupo Logo (construcción e infraestructura) y Maelsa (electrificación e ingeniería eléctrica), liderada por tres socios. Operamos como un holding sin carga operativa directa, centralizando ventas y distribución de proyectos con aliados estratégicos.
           </p>
 
-          <a
+          <p
             href="#about"
             className="mt-6 inline-flex items-center gap-2 text-[15px] font-semibold text-neutral-900 hover:text-red-600"
           >
-            Más sobre nosotros <ArrowRight size={18} weight="bold" />
-          </a>
+            Compartimos la visión de transformar a México a través del sector privado.
+          </p>
         </div>
 
         {/* Columna derecha: GRID 2×2 */}

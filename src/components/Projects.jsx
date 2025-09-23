@@ -4,9 +4,10 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 const PROJECTS = [
-  { title: "Parque Industrial San Ignacio", subtitle: "Nave + urbanización / 42,000 m²", image: "/projects/21.jpg", tags: ["Obra privada","Estructura","Concreto"] },
-  { title: "Fraccionamiento Los Sauces", subtitle: "Torre de 22 niveles / 18,500 m²", image: "/projects/21.jpg", tags: ["Vertical","Premium"] },
-  { title: "Reencarpetamiento Carretera Mezquital", subtitle: "Vialidades / 9.2 km", image: "/photos/mezquital.jpg", tags: ["Carreteras","Asfalto"] },
+  { title: "Electrificación CLID centro logística industrial ", subtitle: "", image: "/photos/4985824.jpg", tags: ["Electrificación","Iluminación"] },
+  { title: "Electrificación carretera Durango Mazatlán", subtitle: "", image: "/photos/ener.jpg", tags: ["Electrificación","Carreteras"] },
+  { title: "Construcción de +2500 viviendas", subtitle: "Grupo LOGO", image: "/photos/IMG_8780.webp", tags: ["Vivienda","Construcción"] },
+  { title: "Distribución de cementos Moctezuma en Durango y Mazatlán ", subtitle: "Grupo LOGO", image: "/photos/IMG_8798.webp", tags: ["Logistica","Materiales"] },
 ];
 
 export default function ProjectsCarousel() {

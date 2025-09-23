@@ -17,40 +17,26 @@ const ROW_B = [
   { src: "/logos/8.jpeg" },
   { src: "/logos/9.jpeg" },
   { src: "/logos/10.jpeg" },
+  { src: "/logos/10.jpeg" },
 ];
 
-function RowMarquee({ items, reverse = false, speed = 28 }) {
+function LogosRow({ items }) {
   return (
-    <div className="relative overflow-hidden bg-white h-[100px] mb-10">
-      {/* Fade a los lados: del color del panel (neutral-900) hacia transparente */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-32 bg-[linear-gradient(to_right,#141414_0%,#141414_5%,transparent_70%,transparent_100%)]" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-32 bg-[linear-gradient(to_left,#141414_0%,#141414_5%,transparent_70%,transparent_100%)]" />
-
-      {/* Banda blanca completa (sin mask) */}
-      <div
-        className="flex items-center gap-10 bg-white h-[100px] py-10"
-        style={{ animation: `${reverse ? "marqueeR" : "marquee"} ${speed}s linear infinite` }}
-      >
-        {[...items, ...items].map((logo, i) => (
-          <div
-            key={i}
-            className="relative h-20 w-40 shrink-0 rounded-lg bg-white p-3 "
-          >
-            <Image src={logo.src} alt="logo" fill className="object-contain" sizes="160px" />
-          </div>
-        ))}
-      </div>
-
-      <style jsx>{`
-        @keyframes marquee {
-          from { transform: translateX(0); }
-          to   { transform: translateX(-50%); }
-        }
-        @keyframes marqueeR {
-          from { transform: translateX(-50%); }
-          to   { transform: translateX(0); }
-        }
-      `}</style>
+    <div className="flex flex-wrap justify-center gap-6 bg-white py-6">
+      {items.map((logo, i) => (
+        <div
+          key={i}
+          className="relative h-20 w-40 shrink-0 rounded-lg bg-[#F7F7F7] p-3 shadow-sm"
+        >
+          <Image
+            src={logo.src}
+            alt={`logo-${i}`}
+            fill
+            className="object-contain"
+            sizes="160px"
+          />
+        </div>
+      ))}
     </div>
   );
 }
@@ -63,13 +49,13 @@ export default function LogosPanel() {
         <div className="relative overflow-hidden rounded-3xl border border-neutral-200/60 bg-[#141414] text-white shadow-[0_30px_80px_-30px_rgba(0,0,0,.5)]">
           {/* glow suave */}
           <div className="pointer-events-none absolute inset-0 rounded-3xl bg-[radial-gradient(120%_80%_at_50%_-10%,rgba(255,255,255,.08),transparent_60%)]" />
-          <div className="pointer-events-none absolute inset-0 rounded-3xl ring-1  ring-white/10" />
+          <div className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-white/10" />
 
           {/* Título y subtítulo dentro */}
           <div className="relative z-10 px-6 py-8 text-center">
             <p className="text-sm font-semibold text-red-500">Grupo</p>
             <h2 className="mt-2 text-3xl md:text-4xl font-black text-white">
-              Nuestras <span className="italic font-medium">10 empresas</span>
+              Nuestras <span className="italic font-medium">12 empresas</span>
               <span className="text-red-500">.</span>
             </h2>
             <p className="mt-2 text-sm text-white/70">+500 colaboradores</p>
@@ -78,12 +64,10 @@ export default function LogosPanel() {
             </p>
           </div>
 
-          {/* Bandas + separador grueso */}
-          <div className="relative z-10">
-            <RowMarquee items={ROW_A} speed={24} />
-            {/* Separador central más grueso */}
-            <div className="h-3 " />
-            <RowMarquee items={ROW_B} reverse speed={28} />
+          {/* Logos fijos en dos filas */}
+          <div className="relative z-10 divide-y divide-neutral-200/60">
+            <LogosRow items={ROW_A} />
+            <LogosRow items={ROW_B} />
           </div>
         </div>
       </div>
