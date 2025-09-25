@@ -6,30 +6,30 @@ import { X, ArrowRight, Asterisk } from "@phosphor-icons/react";
 
 const teamImages = [
   {
-    src: "/socios/manuel.jpg",
+    src: "/socios/manuel.jpeg",
     alt: "Manuel Bueno",
     name: "Manuel Bueno",
     role: "Director General y socio",
     bio: "Más de 15 años liderando proyectos de infraestructura, vivienda y obra industrial a gran escala, con foco en transparencia y ejecución impecable.",
   },
   {
-    src: "/socios/sida.jpg",
+    src: "/socios/sida.jpeg",
     alt: "José Ramón Sida",
     name: "José Ramón Sida",
     role: "Socio fundador",
     bio: "Especialista en planeación y gestión de costos. Impulsa la innovación y la productividad en cada frente de obra.",
   },
   {
-    src: "/socios/arreola.jpg",
+    src: "/socios/cruz.jpeg",
     alt: "Cruz Arreola",
     name: "Cruz Arreola",
     role: "Socio fundador",
     bio: "Experto en dirección de obras urbanas y eléctricas. Integra equipos multidisciplinarios para entregar valor en tiempo y forma.",
   },
   {
-    src: "/socios/arreola.jpg",
-    alt: "Rodolfo Arrellano",
-    name: "Rodolfo Arrellano",
+    src: "/socios/arellano.jpeg",
+    alt: "Rodolfo Arellano",
+    name: "Rodolfo Arellano",
     role: "Socio fundador",
     bio: "Estratega de alto impacto. Alinea visión comercial y operación para escalar proyectos con estándares de clase mundial.",
   },
@@ -86,22 +86,21 @@ export default function TeamSectionVisionaries() {
           </div>
 
           <h2 className="text-[clamp(32px,6vw,56px)] leading-[0.95] font-black text-neutral-900">
-            Detrás de
-            <br />
-            <span className="italic font-medium">Nuestra visión</span>
+            Equipo
             <span className="text-red-500">.</span>
           </h2>
-
-          <p className="mt-4 max-w-md text-[15px] leading-relaxed text-neutral-600">
-            <span className="font-bold">DEUZ GROUP</span> es una comercializadora nacional que agrupa a Grupo Logo (construcción e infraestructura) y Maelsa (electrificación e ingeniería eléctrica), liderada por tres socios. Operamos como un holding sin carga operativa directa, centralizando ventas y distribución de proyectos con aliados estratégicos.
-          </p>
-
           <p
             href="#about"
-            className="mt-6 inline-flex items-center gap-2 text-[15px] font-semibold text-neutral-900 hover:text-red-600"
+            className="mt-6 inline-flex items-center gap-2 text-[20px] font-semibold text-neutral-900 hover:text-red-600"
           >
             Compartimos la visión de transformar a México a través del sector privado.
           </p>
+
+          <p className="mt-4 max-w-md text-[15px] leading-relaxed text-neutral-600">
+            <span className="font-bold"></span> es una comercializadora nacional que agrupa a Grupo Logo (construcción e infraestructura) y Maelsa (electrificación e ingeniería eléctrica), liderada por tres socios. Operamos como un holding sin carga operativa directa, centralizando ventas y distribución de proyectos con aliados estratégicos.
+          </p>
+
+
         </div>
 
         {/* Columna derecha: GRID 2×2 */}

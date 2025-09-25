@@ -7,8 +7,9 @@ const ESTADOS_CON_OBRA = new Set([
   "Durango",
   "Chihuahua",
   "Coahuila",
-  "Quintana Roo", // Cancún está en Quintana Roo
+  "Quintana Roo", 
   "Tabasco",
+  "Sinaloa"
 ]);
 
 export default function MapaMexico() {
@@ -63,40 +64,55 @@ export default function MapaMexico() {
         <div className="md:col-span-8">
           <div className="rounded-2xl border border-neutral-200 bg-white shadow-sm">
             <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-[60vh] max-h-[560px]">
-              {features.map((f, i) => {
-                const props = f.properties || {};
-                // Cambia la clave según el GeoJSON que estés usando:
-                const nombre =
-                  props.nom_ent || props.NOMGEO || props.NAME_1 || props.name || `E${i}`;
+            {features.map((f, i) => {
+  const props = f.properties || {};
+  const nombre =
+    props.nom_ent || props.NOMGEO || props.NAME_1 || props.name || `E${i}`;
 
-                const tieneObra = ESTADOS_CON_OBRA.has(nombre);
-                const d = path ? path(f) : "";
+  const tieneObra = ESTADOS_CON_OBRA.has(nombre);
+  const d = path ? path(f) : "";
+  const active = hoverName === nombre;
 
-                return (
-                  <g
-                    key={i}
-                    onMouseEnter={() => setHoverName(nombre)}
-                    onMouseLeave={() => setHoverName(null)}
-                    onTouchStart={() => setHoverName(nombre)}
-                  >
-                    <path
-                      d={d}
-                      fill={tieneObra ? "#fee2e2" : "#f8fafc"}
-                      stroke="#cbd5e1"
-                      strokeWidth={1}
-                    />
-                    {tieneObra && (
-                      <path
-                        d={d}
-                        fill="none"
-                        stroke="#ef4444"
-                        strokeWidth={2}
-                        opacity={0.6}
-                      />
-                    )}
-                  </g>
-                );
-              })}
+  return (
+    <g
+      key={i}
+      className={tieneObra ? "group cursor-pointer" : "cursor-default"}
+      onMouseEnter={() => tieneObra && setHoverName(nombre)}
+      onMouseLeave={() => tieneObra && setHoverName(null)}
+      onTouchStart={() => tieneObra && setHoverName(nombre)}
+    >
+      {/* Aplica transform solo si tiene obra */}
+      <g
+        className={[
+          "transition-transform duration-200 ease-out",
+          "[transform-box:fill-box] [transform-origin:center]",
+          tieneObra ? "group-hover:scale-[1.04]" : "",
+          tieneObra && active ? "scale-[1.04]" : "",
+          // opcional: sombra solo para los que tienen obra
+          tieneObra ? "group-hover:drop-shadow-[0_6px_14px_rgba(0,0,0,0.18)]" : "",
+          tieneObra && active ? "drop-shadow-[0_6px_14px_rgba(0,0,0,0.18)]" : "",
+        ].join(" ")}
+      >
+        <path
+          d={d}
+          fill={tieneObra ? "#fee2e2" : "#f8fafc"}
+          stroke="#cbd5e1"
+          strokeWidth={1}
+        />
+        {tieneObra && (
+          <path
+            d={d}
+            fill="none"
+            stroke="#ef4444"
+            strokeWidth={2}
+            opacity={0.6}
+          />
+        )}
+      </g>
+    </g>
+  );
+})}
+
 
               {hoverName && (
                 <text x={16} y={28} fontSize={14} fontWeight={600} fill="#111827">

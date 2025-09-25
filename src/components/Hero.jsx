@@ -49,7 +49,10 @@ export default function Hero() {
         {/* Título principal */}
         <h1 className="mt-6 leading-[0.95] tracking-tight text-white">
           <span className="block text-4xl sm:text-6xl md:text-7xl font-sans uppercase">
-            OBRAS QUE
+            OBRAS
+          </span>
+          <span className="text-4xl sm:text-6xl md:text-7xl font-sans uppercase block text-transparent bg-clip-text bg-gradient-to-b from-amber-500 to-amber-300">
+            LLAVE EN MANO QUE
           </span>
           <span className="block bg-gradient-to-b from-[#FF2A2A] to-[#B00012] bg-clip-text text-transparent text-5xl sm:text-7xl md:text-8xl font-sans font-black uppercase">
             TRASCIENDEN
