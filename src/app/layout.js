@@ -8,6 +8,16 @@ const montserrat = Montserrat({
   subsets: ["latin"],
 });
 
+// 1. Movemos la configuración del viewport aquí afuera
+export const viewport = {
+  themeColor: "#000000", // Esto pinta la barra de direcciones (arriba)
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  // Opcional: Para iOS web apps (PWA)
+  colorScheme: "dark", 
+};
+
 export const metadata = {
   title: {
     default: "DEUZ | Grupo Empresarial",
@@ -41,21 +51,23 @@ export const metadata = {
     description: "Obras que trascienden en México.",
     images: ["/og-image.png"],
   },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    themeColor: "#E50914",
-  },
+  // Ya no va viewport aquí dentro
 };
 
 export default function RootLayout({ children }) {
   return (
-    
-    <html lang="es" className={montserrat.variable}>
+    // 2. Agregamos 'bg-black' a <html> también. 
+    // Esto asegura que el "overscroll" (cuando estiras la pagina) sea negro y no blanco.
+    <html lang="es" className={`${montserrat.variable} bg-black`}>
       
-      <body className="font-sans antialiased overflow-x-clip">{children}
-      <Header />
-      <Footer />
+      {/* Nota: Usualmente el Header va ANTES de children. 
+         Si lo tenías abajo intencionalmente (ej. fixed bottom), déjalo así. 
+         Si no, muévelo arriba de {children}.
+      */}
+      <body className="font-sans antialiased overflow-x-clip bg-black text-white">
+        <Header />
+        {children}
+        <Footer />
       </body>
     </html>
   );

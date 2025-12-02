@@ -57,13 +57,13 @@ export default function Footer() {
 
         {/* Link columns */}
         <div className="md:col-span-3">
-          <h4 className="text-sm font-semibold text-zinc-200">Important</h4>
+          <h4 className="text-sm font-semibold text-zinc-200">Navegación</h4>
           <ul className="mt-4 space-y-3 text-sm text-zinc-400">
             <li><Link href="#servicios" className="hover:text-white">Servicios</Link></li>
-            <li><Link href="#portfolio" className="hover:text-white">Proyectos</Link></li>
-            <li><Link href="#precios" className="hover:text-white">Precios</Link></li>
+            <li><Link href="#proyectos" className="hover:text-white">Proyectos</Link></li>
+            <li><Link href="#cotizador" className="hover:text-white">Cotizaciones</Link></li>
             <li><Link href="#nosotros" className="hover:text-white">Nosotros</Link></li>
-            <li><Link href="#reviews" className="hover:text-white">Reseñas</Link></li>
+            <li><Link href="#contacto" className="hover:text-white">Contacto</Link></li>
           </ul>
         </div>
 
@@ -72,7 +72,6 @@ export default function Footer() {
           <ul className="mt-4 space-y-3 text-sm text-zinc-400">
             <li><Link href="/terminos" className="hover:text-white">Términos & condiciones</Link></li>
             <li><Link href="/privacidad" className="hover:text-white">Aviso de privacidad</Link></li>
-            <li><Link href="/contacto" className="hover:text-white">Contáctanos</Link></li>
           </ul>
         </div>
       </div>

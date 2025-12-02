@@ -1,0 +1,55 @@
+/* src/components/ShinyText.css */
+
+.shiny-text {
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  display: inline-block;
+  color: transparent; /* Necesario para que el fondo se vea */
+  animation: shine 5s linear infinite;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 100%;
+  }
+  100% {
+    background-position: -100%;
+  }
+}
+
+.shiny-text.disabled {
+  animation: none;
+}
+
+/* --- COLORES METÁLICOS --- */
+
+/* Plata / Acero */
+.shiny-silver {
+  background-image: linear-gradient(
+    120deg,
+    #cccccc 40%,    /* Gris base */
+    #ffffff 50%,    /* Brillo blanco */
+    #cccccc 60%     /* Gris base */
+  );
+}
+
+/* Oro */
+.shiny-gold {
+  background-image: linear-gradient(
+    120deg,
+    #b45309 40%,    /* Dorado oscuro base */
+    #fcd34d 50%,    /* Dorado claro brillo */
+    #b45309 60%     /* Dorado oscuro base */
+  );
+}
+
+/* Rojo Anodizado */
+.shiny-red {
+  background-image: linear-gradient(
+    120deg,
+    #991b1b 40%,    /* Rojo oscuro base */
+    #ff8888 50%,    /* Rojo claro brillo */
+    #991b1b 60%     /* Rojo oscuro base */
+  );
+}

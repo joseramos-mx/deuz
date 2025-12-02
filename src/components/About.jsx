@@ -97,7 +97,8 @@ export default function TeamSectionVisionaries() {
           </p>
 
           <p className="mt-4 max-w-md text-[15px] leading-relaxed text-neutral-600">
-            <span className="font-bold"></span> es una comercializadora nacional que agrupa a Grupo Logo (construcción e infraestructura) y Maelsa (electrificación e ingeniería eléctrica), liderada por tres socios. Operamos como un holding sin carga operativa directa, centralizando ventas y distribución de proyectos con aliados estratégicos.
+            <span className="font-bold"></span> DEUZ es un holding mexicano especializado en soluciones integrales de construcción e ingeniería para proyectos de alto impacto.
+Impulsamos el desarrollo de infraestructura en México y Latinoamérica a través de una red nacional de aliados estratégicos, maquinaria especializada y proveedores certificados.
           </p>
 
 

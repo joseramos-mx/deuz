@@ -2,92 +2,109 @@
 
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+// Asegúrate de importar ShinyText correctamente desde donde lo tengas guardado
+import ShinyText from "@/components/ShinyText"; 
+
 
 export default function Hero() {
   return (
-    <section id="inicio" className="relative isolate overflow-hidden bg-[#141414]">
-      {/* --- background gradients --- */}
+    <section 
+      id="inicio" 
+      className="relative isolate overflow-hidden bg-[#141414] min-h-screen flex flex-col justify-center items-center"
+    >
+      
+      {/* --- VIDEO DE FONDO --- */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 -z-50 h-full w-full object-cover" 
+      >
+        <source 
+          src="https://ik.imagekit.io/0i4our85y/introvideo.mp4?updatedAt=1764700051165" 
+          type="video/mp4" 
+        />
+      </video>
+
+      {/* --- Overlay Oscuro --- */}
       <div
         aria-hidden
-        className="overflow-hidden absolute inset-0 -z-20 bg-[radial-gradient(900px_500px_at_50%_55%,rgba(255,0,32,0.35),transparent_60%)]"
-      />
-      <div
-        aria-hidden
-        className="overflow-hidden absolute inset-0 -z-30 bg-[linear-gradient(180deg,rgba(3,4,4,0.9),rgba(3,4,4,0.98)),radial-gradient(1200px_600px_at_90%_-10%,rgba(7,40,20,0.25),transparent_70%)]"
+        className="overflow-hidden absolute inset-0 -z-30 bg-[linear-gradient(180deg,rgba(3,4,4,0.3),rgba(3,4,4,0.8)),radial-gradient(1200px_600px_at_90%_-10%,rgba(7,40,20,0.2),transparent_70%)]"
       />
 
-      {/* --- transición blanca al fondo --- */}
+      {/* --- background gradients (Rojo) --- */}
       <div
         aria-hidden
-        className="absolute bottom-0 left-0 right-0 h-40 -z-10 bg-gradient-to-t from-white via-white/70 to-transparent"
+        className="overflow-hidden absolute inset-0 -z-20 bg-[radial-gradient(900px_500px_at_50%_55%,rgba(255,0,32,0.3),transparent_60%)]"
       />
-
-      {/* --- decorative lines --- */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute left-0 right-0 top-20 h-px bg-white/10" />
-        <div className="absolute left-[11rem] top-0 bottom-0 w-px bg-white/10" />
-        <div className="absolute right-[11rem] top-0 bottom-0 w-px bg-white/10" />
-      </div>
 
       {/* --- content --- */}
-      <div className="relative mx-auto max-w-7xl px-6 pt-28 pb-8 text-center md:px-8 lg:pt-36">
+      <div className="relative mx-auto max-w-7xl px-6 py-12 text-center md:px-8">
         
-        {/* Banda con logo y subtítulo */}
+        {/* Banda con logo */}
         <div className="mx-auto w-fit flex flex-col items-center">
           <Image
-            src="/logo.svg" // 👈 aquí va el logo de DEUZ
+            src="/logo.svg" 
             alt="Logo DEUZ"
             width={140}
             height={50}
             priority
           />
-          <p className="mt-2 text-sm font-medium tracking-wide text-red-200 uppercase">
+          <p className="mt-2 text-sm font-medium tracking-wide text-red-200 uppercase drop-shadow-md">
             Grupo empresarial
           </p>
         </div>
 
-        {/* Título principal */}
-        <h1 className="mt-6 leading-[0.95] tracking-tight text-white">
-          <span className="block text-4xl sm:text-6xl md:text-7xl font-sans uppercase">
-            OBRAS
-          </span>
-          <span className="text-4xl sm:text-6xl md:text-7xl font-sans uppercase block text-transparent bg-clip-text bg-gradient-to-b from-amber-500 to-amber-300">
-            LLAVE EN MANO QUE
-          </span>
-          <span className="block bg-gradient-to-b from-[#FF2A2A] to-[#B00012] bg-clip-text text-transparent text-5xl sm:text-7xl md:text-8xl font-sans font-black uppercase">
-            TRASCIENDEN
-          </span>
+        {/* --- TÍTULOS CON SHINY TEXT (Corregidos) --- */}
+        {/* --- TÍTULOS CON SHINY TEXT (Responsive Ajustado) --- */}
+        <h1 className="mt-6 leading-[0.95] tracking-tight drop-shadow-2xl flex flex-col items-center w-full max-w-full">
+          
+          {/* 1. OBRAS */}
+          {/* Reduje el tamaño base a text-4xl para que no rompa en móviles pequeños */}
+          <ShinyText 
+            text="OBRAS" 
+            variant="silver" 
+            speed={3} 
+            className="text-center text-4xl sm:text-6xl md:text-7xl font-sans uppercase font-bold" 
+          />
+          
+          {/* 2. LLAVE EN MANO QUE */}
+          {/* Agregué 'text-center' y 'max-w-xs sm:max-w-none' para controlar el salto de línea en móvil */}
+          <ShinyText 
+            text="LLAVE EN MANO QUE" 
+            variant="silver" 
+            speed={3} 
+            className="text-center text-2xl sm:text-5xl md:text-7xl font-sans uppercase font-bold py-2 leading-tight" 
+          />
+
+          {/* 3. TRASCIENDEN */}
+          {/* Ajusté a text-4xl en móvil. 'break-all' es un seguro por si la palabra es más ancha que la pantalla */}
+          <ShinyText 
+            text="TRASCIENDEN" 
+            variant="silver" 
+            speed={3} 
+            className="text-center text-4xl sm:text-7xl md:text-8xl font-sans font-black uppercase pb-2 break-words" 
+          />
+          
         </h1>
 
-        <p className="mx-auto mt-5 max-w-3xl text-balance text-sm sm:text-base md:text-lg text-zinc-300">
+        <p className="mx-auto mt-6 max-w-3xl text-balance text-sm sm:text-base md:text-lg text-zinc-200 drop-shadow-md">
           De planos a realidad, con propósito y excelencia.
         </p>
 
         <div className="mt-8 flex items-center justify-center gap-3">
-          <Button className="rounded-md bg-[#E50914] px-5 py-5 text-sm font-semibold text-white hover:bg-[#cf0711]">
+          <Button className="rounded-md bg-[#E50914] px-6 py-6 text-base font-semibold text-white hover:bg-[#cf0711] shadow-lg shadow-red-900/20 transition-all hover:scale-105">
             Cotizar ahora
           </Button>
           <Button
             variant="outline"
-            className="rounded-md border-white/20 bg-white/10 px-5 py-5 text-sm text-white hover:bg-white/15"
+            className="rounded-md border-white/30 bg-white/10 px-6 py-6 text-base text-white hover:bg-white/20 backdrop-blur-sm transition-all hover:scale-105"
           >
             Conocer más
           </Button>
         </div>
 
-        {/* hero image */}
-        <div className="relative mx-auto mt-16 w-full max-w-6xl px-2 sm:px-4 md:px-6 lg:px-8">
-          <div className="relative overflow-hidden rounded-[36px] ring-1 ring-white/10">
-            <Image
-              src="/photos/hero.png"
-              alt="retroexcavadora en servicio de construcción"
-              width={2400}
-              height={800}
-              priority
-              className="h-[550px] w-full object-cover"
-            />
-          </div>
-        </div>
       </div>
     </section>
   );
