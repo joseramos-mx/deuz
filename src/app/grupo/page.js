@@ -46,7 +46,7 @@ export default function GrupoPage() {
             <ol className="mt-10 border-t border-deuz-line">
               {historia.map((h) => (
                 <li key={h.anio} className="grid gap-2 border-b border-deuz-line py-5 sm:grid-cols-[140px_1fr]">
-                  <span className="font-mono text-sm text-deuz-red">{h.anio}</span>
+                  <span className="font-mono text-sm text-deuz-accent">{h.anio}</span>
                   <span className="text-deuz-text">{h.hito}</span>
                 </li>
               ))}
@@ -66,7 +66,7 @@ export default function GrupoPage() {
                 </div>
                 <div>
                   <h3 className="text-lg font-medium text-deuz-text">{s.nombre}</h3>
-                  <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.14em] text-deuz-red">{s.cargo}</p>
+                  <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.14em] text-deuz-accent">{s.cargo}</p>
                   <p className="mt-4 text-sm leading-relaxed text-deuz-muted">{s.bio}</p>
                 </div>
               </li>

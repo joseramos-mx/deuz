@@ -16,7 +16,7 @@ export default function ImpactoPage() {
 
       <section className={section}>
         <div className={`${container} grid items-center gap-12 lg:grid-cols-12`}>
-          <p aria-hidden className="text-[clamp(7rem,26vw,20rem)] font-medium leading-[0.8] tracking-tighter text-deuz-red lg:col-span-6">
+          <p aria-hidden className="text-[clamp(7rem,26vw,20rem)] font-medium leading-[0.8] tracking-tighter text-deuz-accent lg:col-span-6">
             {impacto.porcentaje}
           </p>
           <div className="relative aspect-[4/3] overflow-hidden lg:col-span-6">

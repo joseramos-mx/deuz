@@ -29,7 +29,7 @@ export default function PresenceInteractive({ obrasPorEstado, children }) {
       >
         {activo ? (
           <>
-            <span className="text-deuz-red">◆</span> {activo}
+            <span className="text-deuz-accent">◆</span> {activo}
             {obras != null && <span className="text-deuz-muted"> · {obras} obras</span>}
           </>
         ) : (

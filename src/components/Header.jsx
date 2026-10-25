@@ -18,6 +18,8 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [solOpen, setSolOpen] = useState(false);
   const solRef = useRef(null);
+  const abrirRef = useRef(null);
+  const cerrarRef = useRef(null);
   const pathname = usePathname();
 
   // Cierra todo al cambiar de ruta
@@ -39,16 +41,19 @@ export default function Header() {
     };
   }, [solOpen]);
 
-  // Menú móvil: bloquea scroll y cierra con ESC
+  // Menú móvil: bloquea scroll, mueve el foco y cierra con ESC
   useEffect(() => {
     if (!menuOpen) return;
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    cerrarRef.current?.focus();
+    const boton = abrirRef.current;
     const onKey = (e) => e.key === "Escape" && setMenuOpen(false);
     window.addEventListener("keydown", onKey);
     return () => {
       document.body.style.overflow = prev;
       window.removeEventListener("keydown", onKey);
+      boton?.focus();
     };
   }, [menuOpen]);
 
@@ -90,7 +95,7 @@ export default function Header() {
                           onClick={() => setSolOpen(false)}
                           className="group flex gap-4 p-4 transition-colors hover:bg-deuz-elev-2 focus-visible:bg-deuz-elev-2 focus-visible:outline-none"
                         >
-                          <span className="font-mono text-[11px] text-deuz-dim group-hover:text-deuz-red">
+                          <span className="font-mono text-[11px] text-deuz-dim group-hover:text-deuz-accent">
                             0{i + 1}
                           </span>
                           <span>
@@ -118,6 +123,7 @@ export default function Header() {
 
           {/* Móvil */}
           <button
+            ref={abrirRef}
             type="button"
             className="-mr-2 p-2 text-deuz-text lg:hidden"
             aria-label="Abrir menú"
@@ -151,6 +157,7 @@ export default function Header() {
           <div className="relative flex h-16 items-center justify-between border-b border-deuz-line px-4 sm:px-6">
             <Image src="/logo.svg" alt="DEUZ" width={96} height={36} />
             <button
+              ref={cerrarRef}
               type="button"
               className="-mr-2 p-2 text-deuz-text"
               aria-label="Cerrar menú"
@@ -170,7 +177,7 @@ export default function Header() {
                     onClick={() => setMenuOpen(false)}
                     className="flex items-baseline gap-4 py-4 text-lg font-medium text-deuz-text"
                   >
-                    <span className="font-mono text-[11px] text-deuz-red">0{i + 1}</span>
+                    <span className="font-mono text-[11px] text-deuz-accent">0{i + 1}</span>
                     {s.label}
                   </Link>
                 </li>

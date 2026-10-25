@@ -36,7 +36,7 @@ export default function Segments() {
                   {s.nombre}
                   <ArrowUpRight
                     aria-hidden
-                    className="mt-1 size-6 shrink-0 text-deuz-dim transition group-hover:text-deuz-red"
+                    className="mt-1 size-6 shrink-0 text-deuz-dim transition group-hover:text-deuz-accent"
                   />
                 </h3>
                 <p className="mt-3 max-w-md text-deuz-muted">{s.valor}</p>

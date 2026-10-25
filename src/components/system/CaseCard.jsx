@@ -81,7 +81,7 @@ export default function CaseCard({ proyecto, href, priority = false, className }
           {href && (
             <ArrowUpRight
               aria-hidden
-              className="mt-0.5 size-5 shrink-0 text-deuz-muted transition group-hover:text-deuz-red"
+              className="mt-0.5 size-5 shrink-0 text-deuz-muted transition group-hover:text-deuz-accent"
             />
           )}
         </h3>

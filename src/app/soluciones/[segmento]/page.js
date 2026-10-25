@@ -6,6 +6,8 @@ import Cotizador from "@/components/cotizador/Cotizador";
 import { segmentos, getSegmento, CONSULTORIA } from "@/data/soluciones";
 import { proyectosPorSegmento } from "@/data/proyectos";
 import { directorHref } from "@/lib/canales";
+import JsonLd from "@/components/JsonLd";
+import { schemaFaq, schemaMigas } from "@/lib/seo";
 
 export const dynamicParams = false;
 
@@ -20,7 +22,7 @@ export async function generateMetadata({ params }) {
     title: s.seo.title,
     description: s.seo.description,
     alternates: { canonical: `/soluciones/${s.slug}` },
-    openGraph: { title: s.seo.title, description: s.seo.description, images: [{ url: s.imagen }] },
+    openGraph: { title: s.seo.title, description: s.seo.description },
   };
 }
 
@@ -31,6 +33,8 @@ export default async function SolucionPage({ params }) {
 
   return (
     <main>
+      <JsonLd data={schemaFaq(s.faq)} />
+      <JsonLd data={schemaMigas([["Inicio", "/"], ["Soluciones", "/#soluciones"], [s.nombre, `/soluciones/${s.slug}`]])} />
       <PageHero title={s.nombre} intro={s.valor}>
         <CTAButton href="#cotizar" size="lg">
           {s.cta}
@@ -49,9 +53,9 @@ export default async function SolucionPage({ params }) {
             {[...s.servicios, CONSULTORIA].map((sv, i, arr) => (
               <li key={sv} className="flex items-start gap-3 bg-deuz-bg p-5">
                 {i === arr.length - 1 ? (
-                  <Plus aria-hidden className="mt-0.5 size-4 shrink-0 text-deuz-red" />
+                  <Plus aria-hidden className="mt-0.5 size-4 shrink-0 text-deuz-accent" />
                 ) : (
-                  <Check aria-hidden className="mt-0.5 size-4 shrink-0 text-deuz-red" />
+                  <Check aria-hidden className="mt-0.5 size-4 shrink-0 text-deuz-accent" />
                 )}
                 <span className="text-deuz-text">{sv}</span>
               </li>
@@ -96,7 +100,7 @@ export default async function SolucionPage({ params }) {
               <details key={f.p} className="group border-b border-deuz-line">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-5 text-lg text-deuz-text [&::-webkit-details-marker]:hidden">
                   {f.p}
-                  <Plus aria-hidden className="size-5 shrink-0 text-deuz-red transition-transform duration-200 group-open:rotate-45" />
+                  <Plus aria-hidden className="size-5 shrink-0 text-deuz-accent transition-transform duration-200 group-open:rotate-45" />
                 </summary>
                 <p className="pb-6 pr-10 text-deuz-muted">{f.r}</p>
               </details>

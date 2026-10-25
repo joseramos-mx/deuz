@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 const TONES = {
   muted: "text-deuz-muted",
   light: "text-white",
-  red: "text-deuz-red",
+  red: "text-deuz-accent",
   dark: "text-neutral-900",
 };
 
@@ -24,7 +24,7 @@ export default function TechLabel({
       )}
     >
       {marker && (
-        <span aria-hidden className={tone === "muted" ? "text-deuz-red" : undefined}>
+        <span aria-hidden className={tone === "muted" ? "text-deuz-accent" : undefined}>
           ◆
         </span>
       )}

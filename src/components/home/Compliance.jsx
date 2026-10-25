@@ -19,7 +19,7 @@ export default function Compliance({ dossierHref = "/#contacto" }) {
         <ul className="grid gap-px self-start border border-deuz-line bg-deuz-line sm:grid-cols-2 lg:col-span-7">
           {respaldo.map((r) => (
             <li key={r.titulo} className="flex gap-4 bg-deuz-bg p-6">
-              <ShieldCheck aria-hidden className="size-5 shrink-0 text-deuz-red" />
+              <ShieldCheck aria-hidden className="size-5 shrink-0 text-deuz-accent" />
               <div>
                 <h3 className="font-medium text-deuz-text">{r.titulo}</h3>
                 <p className="mt-1 text-sm text-deuz-muted">{r.texto}</p>
@@ -27,7 +27,7 @@ export default function Compliance({ dossierHref = "/#contacto" }) {
             </li>
           ))}
           <li className="flex gap-4 bg-deuz-bg p-6">
-            <span aria-hidden className="mt-0.5 font-mono text-sm text-deuz-red">◆</span>
+            <span aria-hidden className="mt-0.5 font-mono text-sm text-deuz-accent">◆</span>
             <div>
               <h3 className="font-medium text-deuz-text">Expediente completo bajo solicitud</h3>
               <p className="mt-1 text-sm text-deuz-muted">Acta constitutiva, opiniones de cumplimiento y estados financieros.</p>

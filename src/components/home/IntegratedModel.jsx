@@ -30,10 +30,10 @@ export default function IntegratedModel() {
                 </span>
                 <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-deuz-dim">
                   0{i + 1}
-                  {!ultimo && <span className="ml-2 hidden text-deuz-red md:inline">→</span>}
+                  {!ultimo && <span className="ml-2 hidden text-deuz-accent md:inline">→</span>}
                 </p>
                 <h3 className="mt-3 text-xl font-medium text-deuz-text">
-                  {n.cifra && <span className="text-deuz-red">{n.cifra} </span>}
+                  {n.cifra && <span className="text-deuz-accent">{n.cifra} </span>}
                   {n.titulo}
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-deuz-muted">{n.texto}</p>

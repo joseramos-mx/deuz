@@ -37,7 +37,7 @@ export default function ContactoPage() {
               {canales.map(({ icono: Icono, k, v, href }) => {
                 const contenido = (
                   <>
-                    <Icono aria-hidden className="size-5 text-deuz-red" />
+                    <Icono aria-hidden className="size-5 text-deuz-accent" />
                     <p className="mt-6 font-mono text-[10px] uppercase tracking-[0.14em] text-deuz-dim">{k}</p>
                     <p className="mt-1 text-deuz-text">{v}</p>
                   </>

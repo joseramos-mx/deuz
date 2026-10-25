@@ -46,13 +46,13 @@ export default function Resultado({ folio, estimacion, similares, leyenda, datos
   return (
     <div className="animate-deuz-fade-up space-y-px border border-deuz-line bg-deuz-line">
       <RedBlock cut="tr" className="md:p-12">
-        <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/85">
+        <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-white">
           Pre-propuesta · Folio <span className="text-white">{folio}</span>
         </p>
         <h2 className="mt-5 text-3xl font-medium leading-[1.05] tracking-tight md:text-5xl">
           {datos.nombre.split(" ")[0]}, tu proyecto ya está en manos de un ingeniero.
         </h2>
-        <p className="mt-4 max-w-2xl text-white/90">
+        <p className="mt-4 max-w-2xl text-white">
           Te contactaremos en menos de 24 h. Mientras tanto, esta es la estimación preliminar de tu proyecto de{" "}
           {tipo.label.toLowerCase()} en {datos.municipio}, {datos.estado}.
         </p>
@@ -73,7 +73,7 @@ export default function Resultado({ folio, estimacion, similares, leyenda, datos
       </div>
 
       <div className="grid gap-px md:grid-cols-2">
-        <Lista titulo="Qué incluye" items={alcance.incluye} icono={<Check className="size-4 text-deuz-red" />} />
+        <Lista titulo="Qué incluye" items={alcance.incluye} icono={<Check className="size-4 text-deuz-accent" />} />
         <Lista titulo="Qué no incluye" items={alcance.noIncluye} icono={<X className="size-4 text-deuz-dim" />} />
       </div>
 
@@ -144,7 +144,7 @@ export default function Resultado({ folio, estimacion, similares, leyenda, datos
         <ol className="mt-6 grid gap-px border border-deuz-line bg-deuz-line sm:grid-cols-4">
           {siguientesPasos.map((p, i) => (
             <li key={p.paso} className="bg-deuz-bg p-4">
-              <span className="font-mono text-xs text-deuz-red">0{i + 1}</span>
+              <span className="font-mono text-xs text-deuz-accent">0{i + 1}</span>
               <p className="mt-3 text-sm text-deuz-text">{p.paso}</p>
               <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.14em] text-deuz-dim">{p.plazo}</p>
             </li>

@@ -73,7 +73,7 @@ export default function CapacidadesPage() {
                 {maquinaria.map((m) => (
                   <tr key={m.categoria} className="border-b border-deuz-line">
                     <th scope="row" className="py-4 text-left font-normal text-deuz-text">{m.categoria}</th>
-                    <td className="py-4 text-right font-mono text-deuz-red">{m.cantidad}</td>
+                    <td className="py-4 text-right font-mono text-deuz-accent">{m.cantidad}</td>
                   </tr>
                 ))}
               </tbody>

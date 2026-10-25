@@ -10,6 +10,8 @@ import Leadership from "@/components/home/Leadership";
 import Impact from "@/components/home/Impact";
 import FinalCTA from "@/components/home/FinalCTA";
 
+export const metadata = { alternates: { canonical: "/" }, openGraph: { url: "/" } };
+
 // Orden de la home = orden de las preguntas del cliente: escala, prueba, respaldo, cotización.
 export default function Home() {
   return (

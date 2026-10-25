@@ -20,7 +20,7 @@ export default function StepIndicator({
   const off = tone === "light" ? "bg-white/40 hover:bg-white/70" : "bg-white/25 hover:bg-white/50";
 
   return (
-    <ol className={cn("flex items-center gap-1.5", className)}>
+    <ol className={cn("flex items-center", onSelect ? "-mx-[9px]" : "gap-1.5", className)}>
       {Array.from({ length: count }, (_, i) => {
         const isActive = i === active;
         const label = labels[i] ?? `Paso ${i + 1} de ${count}`;
@@ -50,13 +50,14 @@ export default function StepIndicator({
                 onClick={() => onSelect(i)}
                 aria-label={label}
                 aria-current={isActive ? "step" : undefined}
-                className="-m-1.5 p-1.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                className="p-[9px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
               >
                 {dot}
               </button>
             ) : (
-              <span aria-label={label} aria-current={isActive ? "step" : undefined}>
+              <span aria-current={isActive ? "step" : undefined}>
                 {dot}
+                <span className="sr-only">{label}</span>
               </span>
             )}
           </li>

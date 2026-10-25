@@ -13,7 +13,7 @@ export default function FinalCTA() {
           <h2 className="max-w-4xl text-balance text-4xl font-medium leading-[1] tracking-tight sm:text-5xl md:text-7xl">
             Elevemos tu proyecto con propósito.
           </h2>
-          <p className="mt-6 max-w-xl text-white/90 md:text-lg">
+          <p className="mt-6 max-w-xl text-white md:text-lg">
             Cuéntanos qué vas a construir y recibe una pre-propuesta con rango de inversión y plazo estimado.
           </p>
 
@@ -30,7 +30,7 @@ export default function FinalCTA() {
               </CTAButton>
             )}
           </div>
-          <p className="mt-5 text-[13px] text-white/80">Respuesta de un ingeniero en menos de 24 h.</p>
+          <p className="mt-5 text-[13px] text-white">Respuesta de un ingeniero en menos de 24 h.</p>
         </RedBlock>
       </div>
     </section>

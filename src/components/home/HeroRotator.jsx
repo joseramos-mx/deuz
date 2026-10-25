@@ -66,7 +66,7 @@ export default function HeroRotator({ slides, titulo, ctaPrimario, ctaSecundario
       >
         <RedBlock cut="tr" className="pt-7 sm:pt-8">
           <div className="flex items-center justify-between gap-4">
-            <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-white/85" aria-live="polite">
+            <p className="min-w-0 truncate font-mono text-[11px] uppercase tracking-[0.18em] text-white" aria-live="polite">
               0{active + 1} / 0{slides.length} · <ScrambleText text={slide.division.toUpperCase()} />
             </p>
             <StepIndicator
@@ -75,13 +75,14 @@ export default function HeroRotator({ slides, titulo, ctaPrimario, ctaSecundario
               onSelect={select}
               duration={auto ? INTERVALO : undefined}
               labels={slides.map((s) => s.division)}
+              className="shrink-0"
             />
           </div>
 
           <h1 className="mt-6 text-balance text-[2.6rem] font-medium leading-[0.98] tracking-tight sm:text-6xl md:text-7xl">
             {titulo}
           </h1>
-          <p key={active} className="animate-deuz-fade-up mt-5 max-w-lg text-base text-white/90 md:text-lg">
+          <p key={active} className="animate-deuz-fade-up mt-5 min-h-[4.5em] max-w-lg text-base text-white sm:min-h-[3em] md:text-lg">
             {slide.texto}
           </p>
 
@@ -93,7 +94,7 @@ export default function HeroRotator({ slides, titulo, ctaPrimario, ctaSecundario
               {ctaSecundario.label}
             </CTAButton>
           </div>
-          <p className="mt-4 text-[13px] text-white/80">{microtexto}</p>
+          <p className="mt-4 text-[13px] text-white">{microtexto}</p>
         </RedBlock>
       </div>
     </>

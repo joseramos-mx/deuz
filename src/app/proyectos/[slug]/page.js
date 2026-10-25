@@ -5,6 +5,8 @@ import FinalCTA from "@/components/home/FinalCTA";
 import { proyectos, getProyecto } from "@/data/proyectos";
 import { getSegmento } from "@/data/soluciones";
 import { fmtMagnitud } from "@/lib/formato";
+import JsonLd from "@/components/JsonLd";
+import { schemaProyecto, schemaMigas } from "@/lib/seo";
 
 export const dynamicParams = false;
 
@@ -19,7 +21,7 @@ export async function generateMetadata({ params }) {
     title: p.titulo,
     description: p.resumen,
     alternates: { canonical: `/proyectos/${p.slug}` },
-    openGraph: { title: p.titulo, description: p.resumen, images: p.imagenes.slice(0, 1).map((url) => ({ url })) },
+    openGraph: { title: p.titulo, description: p.resumen },
   };
 }
 
@@ -53,6 +55,8 @@ export default async function ProyectoPage({ params }) {
 
   return (
     <main>
+      <JsonLd data={schemaProyecto(p)} />
+      <JsonLd data={schemaMigas([["Inicio", "/"], ["Proyectos", "/proyectos"], [p.titulo, `/proyectos/${p.slug}`]])} />
       <PageHero title={p.titulo} intro={p.resumen} />
 
       <div className="relative aspect-[21/9] min-h-64 w-full overflow-hidden border-b border-deuz-line">
@@ -128,7 +132,7 @@ export default async function ProyectoPage({ params }) {
             <ol className="mt-10 border-t border-deuz-line">
               {p.lineaTiempo.map((h) => (
                 <li key={h.hito} className="grid gap-2 border-b border-deuz-line py-4 sm:grid-cols-[180px_1fr]">
-                  <span className="font-mono text-xs uppercase tracking-[0.14em] text-deuz-red">{h.fecha}</span>
+                  <span className="font-mono text-xs uppercase tracking-[0.14em] text-deuz-accent">{h.fecha}</span>
                   <span className="text-deuz-text">{h.hito}</span>
                 </li>
               ))}

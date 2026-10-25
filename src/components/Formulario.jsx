@@ -59,7 +59,7 @@ export default function Formulario({ origen, campos, enviar = "Enviar", exito, e
   if (estado === "ok") {
     return (
       <div role="status" className="animate-deuz-fade-up border border-deuz-line bg-deuz-elev p-6 md:p-8">
-        <Check className="size-6 text-deuz-red" />
+        <Check className="size-6 text-deuz-accent" />
         <p className="mt-4 text-xl font-medium text-deuz-text">{exito.titulo}</p>
         <p className="mt-2 text-deuz-muted">{dossierUrl ? exito.conArchivo ?? exito.texto : exito.texto}</p>
         {dossierUrl && (

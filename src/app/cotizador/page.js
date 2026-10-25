@@ -1,6 +1,7 @@
+import { Suspense } from "react";
 import Cotizador from "@/components/cotizador/Cotizador";
+import CotizadorDesdeUrl from "@/components/cotizador/CotizadorDesdeUrl";
 import { GridBackground, container } from "@/components/system";
-import { getTipo } from "@/data/cotizador";
 
 export const metadata = {
   title: "Cotizador de obra",
@@ -10,10 +11,7 @@ export const metadata = {
 };
 
 // Acepta ?tipo=nave_industrial para prellenar desde enlaces de WhatsApp o campañas.
-export default async function CotizadorPage({ searchParams }) {
-  const { tipo } = await searchParams;
-  const tipoInicial = getTipo(tipo) ? tipo : "";
-
+export default function CotizadorPage() {
   return (
     <main className="relative isolate overflow-hidden pt-16">
       <GridBackground className="-z-10" />
@@ -28,7 +26,9 @@ export default async function CotizadorPage({ searchParams }) {
           </p>
         </div>
         <div className="mt-12">
-          <Cotizador key={tipoInicial} tipoInicial={tipoInicial} />
+          <Suspense fallback={<Cotizador />}>
+            <CotizadorDesdeUrl />
+          </Suspense>
         </div>
       </div>
     </main>
