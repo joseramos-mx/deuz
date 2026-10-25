@@ -9,7 +9,6 @@ import Presence from "@/components/home/Presence";
 import Leadership from "@/components/home/Leadership";
 import Impact from "@/components/home/Impact";
 import FinalCTA from "@/components/home/FinalCTA";
-import QuoteWizard from "@/components/Quotes";
 
 // Orden de la home = orden de las preguntas del cliente: escala, prueba, respaldo, cotización.
 export default function Home() {
@@ -25,8 +24,6 @@ export default function Home() {
       <Presence />
       <Leadership />
       <Impact />
-      {/* Provisional hasta la etapa 3 (cotizador nuevo en /cotizador) */}
-      <QuoteWizard />
       <FinalCTA />
     </main>
   );

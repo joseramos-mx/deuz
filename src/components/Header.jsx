@@ -130,8 +130,8 @@ export default function Header() {
         </div>
       </header>
 
-      {/* CTA fijo abajo en móvil */}
-      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-deuz-line bg-deuz-bg/90 p-3 backdrop-blur-md lg:hidden">
+      {/* CTA fijo abajo en móvil (no en el propio cotizador) */}
+      <div hidden={pathname === ctaCotizar.href} className="fixed inset-x-0 bottom-0 z-40 border-t border-deuz-line bg-deuz-bg/90 p-3 backdrop-blur-md lg:hidden">
         <CTAButton href={ctaCotizar.href} className="w-full">
           {ctaCotizar.label}
         </CTAButton>

@@ -34,7 +34,7 @@ export const navPrincipal = [
 
 export const ctaCotizar = {
   label: "Cotizar proyecto",
-  href: "/#cotizador", // → /cotizador (etapa 3)
+  href: "/cotizador",
 };
 
 export const navLegal = [
