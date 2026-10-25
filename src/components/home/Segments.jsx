@@ -2,7 +2,6 @@ import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { SectionHeading, SpotlightCard, container, section } from "@/components/system";
 import { segmentos, CONSULTORIA } from "@/data/soluciones";
-import { soluciones as navSoluciones } from "@/data/navegacion";
 
 export default function Segments() {
   return (
@@ -17,7 +16,7 @@ export default function Segments() {
           {segmentos.map((s, i) => (
             <SpotlightCard
               key={s.slug}
-              href={navSoluciones[i]?.href ?? `/soluciones/${s.slug}`}
+              href={`/soluciones/${s.slug}`}
               className="group flex flex-col bg-deuz-bg focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-deuz-red"
             >
               <div className="relative aspect-[16/9] overflow-hidden">

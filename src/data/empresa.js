@@ -126,3 +126,20 @@ export const mision =
   "Construir obras llave en mano que trasciendan, con estructura propia, transparencia en costos y compromiso con las comunidades.";
 export const vision =
   "Ser el grupo constructor de referencia en el norte de México por escala, cumplimiento e impacto social.";
+
+// Historia: [{ anio: 1994, hito: "..." }]. TODO DEUZ: línea de tiempo real desde la fundación. Vacío = se oculta.
+export const historia = [];
+
+// Plantas e insumos propios (a partir de las empresas del grupo). TODO DEUZ: validar capacidades y cifras.
+export const plantas = [
+  { nombre: "Concreto premezclado", detalle: "Plantas en Durango y Mazatlán.", empresa: "LOGO Concretos", foto: "/photos/IMG_8794.webp" },
+  { nombre: "Asfaltos y triturados", detalle: "Mezcla asfáltica y agregados para pavimentos.", empresa: "GL Asfaltos y Triturados", foto: "/photos/IMG_8799.webp" },
+  { nombre: "Block y prefabricados", detalle: "Producción propia para vivienda y edificación.", empresa: "Dgo Block", foto: "/photos/IMG_8778.webp" },
+  { nombre: "Material eléctrico", detalle: "Suministro para obra eléctrica en media y baja tensión.", empresa: "Electromateriales Prome", foto: "/photos/durango-sala-de-espera-2.jpg" },
+  { nombre: "Ferretería y materiales", detalle: "Abasto propio y a más de 150 ferreteras.", empresa: "Ferretera Rodo", foto: "/photos/IMG_8779.webp" },
+  { nombre: "Logística y transporte", detalle: "Flota de tractocamiones y ollas revolvedoras.", empresa: "Cruza Tractoservicios", foto: "/photos/IMG_8776.webp" },
+];
+
+// Inventario de maquinaria por categoría: [{ categoria: "Excavadoras", cantidad: 12 }].
+// TODO DEUZ: inventario real. Vacío = solo se muestra el total.
+export const maquinaria = [];

@@ -9,3 +9,4 @@ export { default as SpotlightCard } from "./SpotlightCard";
 export { default as ScrambleText } from "./ScrambleText";
 export { default as SectionHeading, container, section } from "./SectionHeading";
 export { default as MexicoMap } from "./MexicoMap";
+export { default as PageHero } from "./PageHero";

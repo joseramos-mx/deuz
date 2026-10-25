@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { soluciones, navPrincipal, ctaCotizar, navLegal } from "@/data/navegacion";
+import { soluciones, navPrincipal, navSecundaria, ctaCotizar, navLegal } from "@/data/navegacion";
 import { contacto, redes } from "@/data/contacto";
 import { GridBackground, TechLabel } from "@/components/system";
 import CurrentYear from "@/components/CurrentYear";
@@ -55,7 +55,7 @@ export default function Footer() {
 
           <div className="md:col-span-2">
             <Column title="Empresa">
-              {navPrincipal.map((item) => (
+              {[...navPrincipal, ...navSecundaria].map((item) => (
                 <li key={item.label}>
                   <Link href={item.href} className={linkCls}>
                     {item.label}

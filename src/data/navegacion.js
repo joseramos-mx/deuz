@@ -1,35 +1,25 @@
 // Navegación principal (DESIGN.md §3).
-// TODO etapa 4: mientras no existan las páginas internas, los enlaces apuntan a
-// las secciones de la home. Al crear cada página, cambiar `href` por la ruta indicada.
+import { segmentos } from "./soluciones";
 
-export const soluciones = [
-  {
-    label: "Vivienda y desarrollo",
-    descripcion: "Casas habitación, edificación vertical y urbanización.",
-    href: "/#soluciones", // → /soluciones/vivienda
-  },
-  {
-    label: "Naves e industria",
-    descripcion: "Naves industriales, losas y suministro de materiales.",
-    href: "/#soluciones", // → /soluciones/industrial
-  },
-  {
-    label: "Infraestructura y obra pública",
-    descripcion: "Vialidades, pavimentos, urbanización y maquinaria pesada.",
-    href: "/#soluciones", // → /soluciones/infraestructura
-  },
-  {
-    label: "Energía y electrificación",
-    descripcion: "Media y baja tensión, líneas y alumbrado.",
-    href: "/#soluciones", // → /soluciones/energia
-  },
-];
+export const soluciones = segmentos.map((s) => ({
+  label: s.nombre,
+  descripcion: s.valor,
+  href: `/soluciones/${s.slug}`,
+}));
 
 export const navPrincipal = [
-  { label: "Proyectos", href: "/#proyectos" }, // → /proyectos
-  { label: "Grupo", href: "/#grupo" }, // → /grupo
-  { label: "Respaldo", href: "/#respaldo" }, // → /respaldo
-  { label: "Contacto", href: "/#contacto" }, // → /contacto
+  { label: "Proyectos", href: "/proyectos" },
+  { label: "Grupo", href: "/grupo" },
+  { label: "Respaldo", href: "/respaldo" },
+  { label: "Contacto", href: "/contacto" },
+];
+
+// Páginas secundarias (footer)
+export const navSecundaria = [
+  { label: "Capacidades", href: "/capacidades" },
+  { label: "Impacto social", href: "/impacto" },
+  { label: "Proveedores", href: "/proveedores" },
+  { label: "Bolsa de trabajo", href: "/trabajo" },
 ];
 
 export const ctaCotizar = {

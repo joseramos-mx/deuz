@@ -18,12 +18,12 @@ export default function Home() {
       <Scale />
       <Segments />
       <IntegratedModel />
-      <FeaturedCases />
+      <FeaturedCases conRutas />
       <Process />
-      <Compliance />
+      <Compliance dossierHref="/respaldo" />
       <Presence />
-      <Leadership />
-      <Impact />
+      <Leadership grupoHref="/grupo" />
+      <Impact impactoHref="/impacto" />
       <FinalCTA />
     </main>
   );

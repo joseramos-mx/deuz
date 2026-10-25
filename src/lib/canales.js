@@ -9,11 +9,11 @@ export function whatsappUrl(mensaje) {
   return `https://wa.me/${WHATSAPP_DIRECTOR}?text=${encodeURIComponent(mensaje)}`;
 }
 
-/** Destino de "Hablar con un director": agenda, luego WhatsApp, luego la sección de contacto. */
+/** Destino de "Hablar con un director": agenda, luego WhatsApp, luego la página de contacto. */
 export function directorHref() {
   return (
     CAL_URL ||
     whatsappUrl("Hola, me gustaría hablar con un director de DEUZ sobre un proyecto.") ||
-    "/#contacto"
+    "/contacto"
   );
 }
