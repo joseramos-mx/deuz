@@ -17,7 +17,6 @@ const ROW_B = [
   { src: "/logos/8.jpeg" },
   { src: "/logos/9.jpeg" },
   { src: "/logos/10.jpeg" },
-  { src: "/logos/10.jpeg" },
 ];
 
 function LogosRow({ items }) {
@@ -30,7 +29,7 @@ function LogosRow({ items }) {
         >
           <Image
             src={logo.src}
-            alt={`logo-${i}`}
+            alt={`Logo de empresa del grupo ${i + 1}`}
             fill
             className="object-contain"
             sizes="160px"

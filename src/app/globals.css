@@ -6,8 +6,20 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-montserrat);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-dm-sans);
+  --font-mono: var(--font-jetbrains-mono);
+
+  /* Sistema visual DEUZ: bg-deuz-red, text-deuz-muted, border-deuz-line, etc. */
+  --color-deuz-red: var(--deuz-red);
+  --color-deuz-red-dark: var(--deuz-red-dark);
+  --color-deuz-bg: var(--bg);
+  --color-deuz-elev: var(--bg-elev);
+  --color-deuz-elev-2: var(--bg-elev-2);
+  --color-deuz-line: var(--line);
+  --color-deuz-line-strong: var(--line-strong);
+  --color-deuz-text: var(--text);
+  --color-deuz-muted: var(--text-muted);
+  --color-deuz-dim: var(--text-dim);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -44,6 +56,18 @@
 }
 
 :root {
+  /* Tokens DEUZ (DESIGN.md §2) */
+  --deuz-red: #E50914;        /* TODO DEUZ: confirmar rojo exacto de marca (el sitio usa #E50914) */
+  --deuz-red-dark: #B8050F;
+  --bg: #0A0A0A;
+  --bg-elev: #141414;
+  --bg-elev-2: #1E1E1E;
+  --line: rgba(255, 255, 255, 0.08);
+  --line-strong: rgba(255, 255, 255, 0.18);
+  --text: #F5F5F5;
+  --text-muted: #A3A3A3;
+  --text-dim: #6B6B6B;
+
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -144,5 +168,42 @@
 
   .animate-shine {
     animation: shine 8s linear infinite;
+  }
+}
+
+/* --- Sistema visual DEUZ --- */
+
+@keyframes deuz-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.8); opacity: 0; }
+}
+
+@keyframes deuz-progress {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+@keyframes deuz-fade-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@layer utilities {
+  .animate-deuz-pulse {
+    animation: deuz-pulse 2.4s ease-out infinite;
+  }
+  .animate-deuz-fade-up {
+    animation: deuz-fade-up 300ms ease-out both;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

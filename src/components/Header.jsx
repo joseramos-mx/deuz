@@ -1,167 +1,202 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { List, X } from "@phosphor-icons/react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { ChevronDown, Menu, X } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { soluciones, navPrincipal, ctaCotizar } from "@/data/navegacion";
+import { CTAButton, GridBackground, TechLabel } from "@/components/system";
 
-const NAV = [
-  { label: "Inicio", href: "#inicio", emphasize: true },
-  { label: "Nosotros", href: "#nosotros"},
-  { label: "Servicios", href: "#servicios" },
-  { label: "Proyectos", href: "#proyectos" },
-  { label: "Contacto", href: "#contacto", emphasize: true },
-];
+const navBtn =
+  "inline-flex h-9 items-center gap-1.5 rounded-[2px] bg-deuz-elev-2 px-4 text-[13px] font-medium text-deuz-text transition-colors duration-200 hover:bg-[#2A2A2A] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white";
 
 export default function Header() {
-  const [open, setOpen] = useState(false);
-  const [active, setActive] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [solOpen, setSolOpen] = useState(false);
+  const solRef = useRef(null);
+  const pathname = usePathname();
 
-  // lee hash actual y escucha cambios (para resaltar el activo)
+  // Cierra todo al cambiar de ruta
   useEffect(() => {
-    const setFromHash = () => setActive(window.location.hash || null);
-    setFromHash();
-    window.addEventListener("hashchange", setFromHash);
-    return () => window.removeEventListener("hashchange", setFromHash);
-  }, []);
+    setMenuOpen(false);
+    setSolOpen(false);
+  }, [pathname]);
 
-  // Bloquea scroll y ESC para cerrar
+  // Dropdown de soluciones: cierra con clic fuera o ESC
   useEffect(() => {
-    if (!open) return;
+    if (!solOpen) return;
+    const onClick = (e) => !solRef.current?.contains(e.target) && setSolOpen(false);
+    const onKey = (e) => e.key === "Escape" && setSolOpen(false);
+    document.addEventListener("mousedown", onClick);
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onClick);
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [solOpen]);
+
+  // Menú móvil: bloquea scroll y cierra con ESC
+  useEffect(() => {
+    if (!menuOpen) return;
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-    const onKey = (e) => e.key === "Escape" && setOpen(false);
+    const onKey = (e) => e.key === "Escape" && setMenuOpen(false);
     window.addEventListener("keydown", onKey);
     return () => {
       document.body.style.overflow = prev;
       window.removeEventListener("keydown", onKey);
     };
-  }, [open]);
+  }, [menuOpen]);
 
   return (
-    <header className="fixed top-0 left-0 z-50 w-full bg-[#040505]/80 backdrop-blur-sm">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-[18px] md:px-8">
-        {/* Logo */}
-        <a href="#top" className="flex items-center gap-2">
-          <Image src="/logo.svg" alt="DEUZ Logo" width={110} height={35} priority />
-        </a>
+    <>
+      <header className="fixed inset-x-0 top-0 z-50 border-b border-deuz-line bg-deuz-bg/85 backdrop-blur-md">
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-6 px-4 sm:px-6 md:px-8">
+          <Link href="/" className="shrink-0" aria-label="DEUZ, ir al inicio">
+            <Image src="/logo.svg" alt="DEUZ" width={96} height={36} priority />
+          </Link>
 
-        {/* Botón móvil */}
-        <button
-          className="p-2 text-white hover:text-red-500 md:hidden"
-          aria-label="Abrir menú"
-          aria-expanded={open}
-          onClick={() => setOpen(true)}
-        >
-          <List size={32} />
-        </button>
+          {/* Desktop */}
+          <nav aria-label="Principal" className="hidden items-center gap-1.5 lg:flex">
+            <div ref={solRef} className="relative">
+              <button
+                type="button"
+                className={navBtn}
+                aria-expanded={solOpen}
+                aria-controls="menu-soluciones"
+                onClick={() => setSolOpen((v) => !v)}
+              >
+                Soluciones
+                <ChevronDown
+                  aria-hidden
+                  className={cn("size-3.5 transition-transform duration-200", solOpen && "rotate-180")}
+                />
+              </button>
 
-        {/* Links desktop (puedes brutalizarlos luego si quieres mantener coherencia) */}
-        <nav className="hidden md:flex items-center gap-8 text-white text-[14px] font-sans">
-          {NAV.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className={`hover:text-red-500 ${
-                item.emphasize ? "text-red-500" : ""
-              }`}
-            >
-              {item.label}
-            </a>
-          ))}
-        </nav>
+              {solOpen && (
+                <div
+                  id="menu-soluciones"
+                  className="animate-deuz-fade-up absolute left-0 top-full mt-2 w-[420px] border border-deuz-line-strong bg-deuz-elev"
+                >
+                  <ul className="divide-y divide-deuz-line">
+                    {soluciones.map((s, i) => (
+                      <li key={s.label}>
+                        <Link
+                          href={s.href}
+                          onClick={() => setSolOpen(false)}
+                          className="group flex gap-4 p-4 transition-colors hover:bg-deuz-elev-2 focus-visible:bg-deuz-elev-2 focus-visible:outline-none"
+                        >
+                          <span className="font-mono text-[11px] text-deuz-dim group-hover:text-deuz-red">
+                            0{i + 1}
+                          </span>
+                          <span>
+                            <span className="block text-sm font-medium text-deuz-text">{s.label}</span>
+                            <span className="mt-1 block text-[13px] text-deuz-muted">{s.descripcion}</span>
+                          </span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+
+            {navPrincipal.map((item) => (
+              <Link key={item.label} href={item.href} className={navBtn}>
+                {item.label}
+              </Link>
+            ))}
+
+            <CTAButton href={ctaCotizar.href} size="sm" className="ml-1.5">
+              {ctaCotizar.label}
+            </CTAButton>
+          </nav>
+
+          {/* Móvil */}
+          <button
+            type="button"
+            className="-mr-2 p-2 text-deuz-text lg:hidden"
+            aria-label="Abrir menú"
+            aria-expanded={menuOpen}
+            aria-controls="menu-movil"
+            onClick={() => setMenuOpen(true)}
+          >
+            <Menu className="size-7" />
+          </button>
+        </div>
+      </header>
+
+      {/* CTA fijo abajo en móvil */}
+      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-deuz-line bg-deuz-bg/90 p-3 backdrop-blur-md lg:hidden">
+        <CTAButton href={ctaCotizar.href} className="w-full">
+          {ctaCotizar.label}
+        </CTAButton>
       </div>
 
-      {/* Menú Fullscreen móvil - estilo brutalista */}
-      {open && (
+      {/* Menú móvil a pantalla completa */}
+      {menuOpen && (
         <div
+          id="menu-movil"
           role="dialog"
           aria-modal="true"
-          className="fixed inset-0 z-[60] md:hidden"
-          onClick={() => setOpen(false)}
+          aria-label="Menú"
+          className="fixed inset-0 z-[60] flex flex-col bg-deuz-bg lg:hidden"
         >
-          {/* Fondo oscuro detrás */}
-          <div className="absolute inset-0 bg-black/70" />
+          <GridBackground />
 
-          {/* Panel */}
-          <div
-            className="
-              absolute inset-0 min-h-svh 
-              bg-[#0B0E0C] text-white 
-              flex flex-col
-            "
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* decor: glow y líneas verticales/horizontales */}
-            {/* Líneas brutalistas */}
+          <div className="relative flex h-16 items-center justify-between border-b border-deuz-line px-4 sm:px-6">
+            <Image src="/logo.svg" alt="DEUZ" width={96} height={36} />
+            <button
+              type="button"
+              className="-mr-2 p-2 text-deuz-text"
+              aria-label="Cerrar menú"
+              onClick={() => setMenuOpen(false)}
+            >
+              <X className="size-7" />
+            </button>
+          </div>
 
+          <nav aria-label="Principal" className="relative flex-1 overflow-y-auto px-4 py-8 sm:px-6">
+            <TechLabel>Soluciones</TechLabel>
+            <ul className="mt-4 border-t border-deuz-line">
+              {soluciones.map((s, i) => (
+                <li key={s.label} className="border-b border-deuz-line">
+                  <Link
+                    href={s.href}
+                    onClick={() => setMenuOpen(false)}
+                    className="flex items-baseline gap-4 py-4 text-lg font-medium text-deuz-text"
+                  >
+                    <span className="font-mono text-[11px] text-deuz-red">0{i + 1}</span>
+                    {s.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
 
-            {/* Header del panel */}
-            <div className="relative z-10 flex items-center justify-between px-6 py-4">
-              <Image src="/logo.svg" alt="DEUZ Logo" width={110} height={35} />
-              <button
-                className="rounded-md p-2 text-white hover:text-red-500"
-                aria-label="Cerrar menú"
-                onClick={() => setOpen(false)}
-              >
-                <X size={28} />
-              </button>
-            </div>
+            <ul className="mt-10 border-t border-deuz-line">
+              {navPrincipal.map((item) => (
+                <li key={item.label} className="border-b border-deuz-line">
+                  <Link
+                    href={item.href}
+                    onClick={() => setMenuOpen(false)}
+                    className="block py-4 text-3xl font-medium tracking-tight text-deuz-text"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
-            {/* Contenido brutalista */}
-            <div className="relative z-10 flex-1 overflow-y-auto px-6 pt-8 pb-12">
-              <nav className="mx-auto flex max-w-[680px] flex-col divide-y divide-white/10">
-                {NAV.map((item, idx) => {
-                  const isActive = active === item.href;
-                  return (
-                    <a
-                      key={item.href}
-                      href={item.href}
-                      onClick={() => setOpen(false)}
-                      className={`
-                        group relative flex items-center justify-between 
-                        py-5 md:py-7
-                        font-sans tracking-tight
-                        text-[15vw] leading-none sm:text-[7vw] md:text-[44px] 
-                        
-                        ${item.emphasize ? "text-red-500" : "text-white"}
-                        hover:bg-white/5
-                        transition
-                      `}
-                    >
-                      {/* Nombre de sección grande */}
-                      <span className="block">
-                        {item.label}
-                        {/* Punto rojo si está activo */}
-                        <span
-                          className={`inline-block translate-y-[-0.25em] align-baseline text-red-600 transition-opacity ${
-                            isActive ? "opacity-100" : "opacity-0 group-hover:opacity-50"
-                          }`}
-                        >
-                          &nbsp;•
-                        </span>
-                      </span>
-
-                      {/* Indicador brutalista (rectángulo) al pasar/activo */}
-                      <span
-                        className={`
-                          hidden sm:block h-6 w-10 rounded-sm 
-                          border ${isActive ? "border-red-600 bg-red-600/30" : "border-white/20"}
-                          transition
-                          group-hover:border-red-600 group-hover:bg-red-600/20
-                        `}
-                        aria-hidden
-                      />
-                    </a>
-                  );
-                })}
-              </nav>
-
-              {/* líneas inferiores decorativas */}
-              
-            </div>
+          <div className="relative border-t border-deuz-line p-3">
+            <CTAButton href={ctaCotizar.href} className="w-full" onClick={() => setMenuOpen(false)}>
+              {ctaCotizar.label}
+            </CTAButton>
           </div>
         </div>
       )}
-    </header>
+    </>
   );
 }

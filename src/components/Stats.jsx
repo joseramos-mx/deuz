@@ -23,7 +23,7 @@ export default function Stats() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-x-10 gap-y-12">
           <Kpi value="+30"      top="Años de"                      bold="experiencia" />
           <Kpi value="+7,000"   top="Proyectos"                    bold="entregados" />
-          <Kpi value="+130"     top="de máquinas especializadas"   bold="propias" />
+          <Kpi value="+130"     top="máquinas especializadas"   bold="propias" />
           <Kpi value="+150"  top="ferreteras"                  bold="abastecidas" />
         </div>
       </div>

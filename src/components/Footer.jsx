@@ -1,107 +1,136 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import {
-  ArrowRight,
-  XLogo,
-  InstagramLogo,
-  LinkedinLogo,
-  Globe,
-} from "@phosphor-icons/react";
+import { soluciones, navPrincipal, ctaCotizar, navLegal } from "@/data/navegacion";
+import { contacto, redes } from "@/data/contacto";
+import { CTAButton, GridBackground, TechLabel } from "@/components/system";
+import CurrentYear from "@/components/CurrentYear";
+
+const linkCls = "text-sm text-deuz-muted transition-colors hover:text-white";
+
+function Column({ title, children }) {
+  return (
+    <div>
+      <TechLabel as="h2">{title}</TechLabel>
+      <ul className="mt-5 space-y-3">{children}</ul>
+    </div>
+  );
+}
 
 export default function Footer() {
+  const datosContacto = [
+    contacto.telefono && { label: contacto.telefono, href: `tel:${contacto.telefono}` },
+    contacto.whatsapp && { label: "WhatsApp", href: `https://wa.me/${contacto.whatsapp}` },
+    contacto.correo && { label: contacto.correo, href: `mailto:${contacto.correo}` },
+  ].filter(Boolean);
+
   return (
-    <footer className="relative isolate bg-[#0B0E0C] text-white">
-      {/* decor lines */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute left-20 top-0 bottom-0 w-px bg-white/10" />
-        <div className="absolute right-20 top-0 bottom-0 w-px bg-white/10" />
-      </div>
+    // pb extra en móvil para no quedar debajo del CTA fijo
+    <footer className="relative isolate overflow-hidden border-t border-deuz-line bg-deuz-bg pb-[68px] text-deuz-text lg:pb-0">
+      <GridBackground className="-z-10" />
 
-      {/* top grid */}
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 py-16 md:grid-cols-12 md:px-8">
-        {/* CTA */}
-        <div className="md:col-span-4 space-y-6">
-          <h3 className="text-2xl md:text-3xl font-black leading-tight text-white">
-            Eleva tu proyecto con nosotros.
-          </h3>
-          <p className="text-sm text-zinc-300 max-w-sm">
-            Experiencia, transparencia y ejecución impecable en cada obra.
-          </p>
-
-          <Link
-            href="#contacto"
-            className="inline-flex items-center gap-3 group"
-          >
-            <span className="grid size-12 place-items-center rounded-full border border-white/30 bg-white/5 transition group-hover:bg-white/10">
-              <ArrowRight size={20} weight="bold" />
-            </span>
-            <span className="border-b border-red-600/60 pb-0.5 text-red-400 group-hover:text-red-300">
-              Agenda una llamada
-            </span>
-          </Link>
-        </div>
-
-        {/* Vertical logo center */}
-        <div className="md:col-span-2 hidden md:flex justify-center">
-          {/* Cambia la ruta del logo a tu archivo */}
-          <div className="relative h-40 w-10">
-          <span className="text-6xl font-black font-sans text-white [writing-mode:vertical-rl] rotate-180">
-  DEUZ
-</span>
-
-
-          </div>
-        </div>
-
-        {/* Link columns */}
-        <div className="md:col-span-3">
-          <h4 className="text-sm font-semibold text-zinc-200">Navegación</h4>
-          <ul className="mt-4 space-y-3 text-sm text-zinc-400">
-            <li><Link href="#servicios" className="hover:text-white">Servicios</Link></li>
-            <li><Link href="#proyectos" className="hover:text-white">Proyectos</Link></li>
-            <li><Link href="#cotizador" className="hover:text-white">Cotizaciones</Link></li>
-            <li><Link href="#nosotros" className="hover:text-white">Nosotros</Link></li>
-            <li><Link href="#contacto" className="hover:text-white">Contacto</Link></li>
-          </ul>
-        </div>
-
-        <div className="md:col-span-3">
-          <h4 className="text-sm font-semibold text-zinc-200">Legal</h4>
-          <ul className="mt-4 space-y-3 text-sm text-zinc-400">
-            <li><Link href="/terminos" className="hover:text-white">Términos & condiciones</Link></li>
-            <li><Link href="/privacidad" className="hover:text-white">Aviso de privacidad</Link></li>
-          </ul>
-        </div>
-      </div>
-
-      {/* bottom bar */}
-      <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-7xl flex-col gap-6 px-6 py-6 md:flex-row md:items-center md:justify-between md:px-8">
-          {/* Socials */}
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
+        {/* Cierre */}
+        <div className="flex flex-col gap-8 border-b border-deuz-line py-14 md:flex-row md:items-end md:justify-between md:py-20">
           <div>
-            <p className="text-sm text-zinc-400 mb-3">Síguenos</p>
-            <div className="flex items-center gap-3">
-              <Link href="https://x.com" className="grid size-9 place-items-center rounded-full bg-white/5 text-zinc-300 hover:text-white border border-white/10">
-                <XLogo size={18} weight="bold" />
-              </Link>
-              <Link href="https://instagram.com" className="grid size-9 place-items-center rounded-full bg-white/5 text-zinc-300 hover:text-white border border-white/10">
-                <InstagramLogo size={18} weight="bold" />
-              </Link>
-              <Link href="https://linkedin.com" className="grid size-9 place-items-center rounded-full bg-white/5 text-zinc-300 hover:text-white border border-white/10">
-                <LinkedinLogo size={18} weight="bold" />
-              </Link>
-              <Link href="https://deuz.mx" className="grid size-9 place-items-center rounded-full bg-white/5 text-zinc-300 hover:text-white border border-white/10">
-                <Globe size={18} weight="bold" />
-              </Link>
-            </div>
+            <TechLabel>Grupo empresarial · {contacto.ciudad}</TechLabel>
+            <p className="mt-5 max-w-xl text-3xl font-medium leading-[1.05] tracking-tight md:text-5xl">
+              Elevemos tu proyecto con propósito.
+            </p>
+          </div>
+          <CTAButton href={ctaCotizar.href} size="lg" className="self-start md:self-auto">
+            {ctaCotizar.label}
+          </CTAButton>
+        </div>
+
+        {/* Navegación */}
+        <div className="grid grid-cols-2 gap-x-6 gap-y-12 py-14 md:grid-cols-12">
+          <div className="col-span-2 md:col-span-4">
+            <Image src="/logo.svg" alt="DEUZ" width={120} height={45} />
+            <p className="mt-5 max-w-xs text-sm leading-relaxed text-deuz-muted">
+              Obras llave en mano con insumos, maquinaria y personal propios.
+            </p>
+            {contacto.direccion && (
+              <address className="mt-5 text-sm not-italic text-deuz-muted">{contacto.direccion}</address>
+            )}
           </div>
 
-          {/* Copyright */}
-          <div className="text-sm text-zinc-500">
-            © {new Date().getFullYear()} DEUZ — Todos los derechos reservados.
+          <div className="col-span-2 sm:col-span-1 md:col-span-3">
+            <Column title="Soluciones">
+              {soluciones.map((s) => (
+                <li key={s.label}>
+                  <Link href={s.href} className={linkCls}>
+                    {s.label}
+                  </Link>
+                </li>
+              ))}
+            </Column>
           </div>
+
+          <div className="md:col-span-2">
+            <Column title="Empresa">
+              {navPrincipal.map((item) => (
+                <li key={item.label}>
+                  <Link href={item.href} className={linkCls}>
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <Link href={ctaCotizar.href} className={linkCls}>
+                  Cotizador
+                </Link>
+              </li>
+            </Column>
+          </div>
+
+          <div className="md:col-span-3">
+            <Column title="Legal">
+              {navLegal.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className={linkCls}>
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </Column>
+
+            {datosContacto.length > 0 && (
+              <div className="mt-10">
+                <Column title="Contacto">
+                  {datosContacto.map((d) => (
+                    <li key={d.href}>
+                      <a href={d.href} className={linkCls}>
+                        {d.label}
+                      </a>
+                    </li>
+                  ))}
+                </Column>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Barra inferior */}
+        <div className="flex flex-col gap-4 border-t border-deuz-line py-6 font-mono text-[11px] uppercase tracking-[0.14em] text-deuz-dim md:flex-row md:items-center md:justify-between">
+          <p>
+            © <CurrentYear initial={new Date().getFullYear()} /> DEUZ · Todos los derechos reservados
+          </p>
+          {redes.length > 0 && (
+            <ul className="flex flex-wrap gap-x-6 gap-y-2">
+              {redes.map((r) => (
+                <li key={r.red}>
+                  <a
+                    href={r.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="transition-colors hover:text-white"
+                  >
+                    {r.red} ↗
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
     </footer>

@@ -7,7 +7,7 @@ const config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-montserrat)", "system-ui", "sans-serif"],
+        sans: ["var(--font-dm-sans)", "system-ui", "sans-serif"],
       },
       // Agregamos la animación Shine aquí:
       animation: {

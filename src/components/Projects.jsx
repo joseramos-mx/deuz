@@ -6,8 +6,8 @@ import Image from "next/image";
 const PROJECTS = [
   { title: "Electrificación CLID centro logística industrial ", subtitle: "", image: "/photos/4985824.jpg", tags: ["Electrificación","Iluminación"] },
   { title: "Electrificación carretera Durango Mazatlán", subtitle: "", image: "/photos/ener.jpg", tags: ["Electrificación","Carreteras"] },
-  { title: "Construcción de +2500 viviendas", subtitle: "Grupo LOGO", image: "/photos/IMG_8780.webp", tags: ["Vivienda","Construcción"] },
-  { title: "Distribución de cementos Moctezuma en Durango y Mazatlán ", subtitle: "Grupo LOGO", image: "/photos/IMG_8798.webp", tags: ["Logistica","Materiales"] },
+  { title: "Construcción de +2500 viviendas", subtitle: "", image: "/photos/IMG_8780.webp", tags: ["Vivienda","Construcción"] },
+  { title: "Distribución de cementos Moctezuma en Durango y Mazatlán ", subtitle: "", image: "/photos/IMG_8798.webp", tags: ["Logistica","Materiales"] },
 ];
 
 export default function ProjectsCarousel() {
@@ -77,7 +77,7 @@ export default function ProjectsCarousel() {
           ))}
         </div>
         <h3 className="text-2xl md:text-3xl font-black leading-tight">{p.title}</h3>
-        <p className="mt-1 text-sm md:text-base text-white/80">{p.subtitle}</p>
+        {p.subtitle && <p className="mt-1 text-sm md:text-base text-white/80">{p.subtitle}</p>}
       </div>
     </article>
   ))}

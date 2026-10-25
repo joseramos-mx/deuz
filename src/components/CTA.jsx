@@ -1,6 +1,14 @@
 "use client";
 
-import { ArrowRight, Phone, EnvelopeSimple, CheckCircle } from "@phosphor-icons/react";
+import { ArrowRight, Phone, WhatsappLogo, EnvelopeSimple, CheckCircle } from "@phosphor-icons/react";
+import { contacto } from "@/data/contacto";
+
+// Solo se muestran los canales con datos reales (ver src/data/contacto.js)
+const canales = [
+  contacto.telefono && { label: "Llamar", href: `tel:${contacto.telefono}`, Icon: Phone },
+  contacto.whatsapp && { label: "WhatsApp", href: `https://wa.me/${contacto.whatsapp}`, Icon: WhatsappLogo },
+  contacto.correo && { label: "Escribir", href: `mailto:${contacto.correo}`, Icon: EnvelopeSimple },
+].filter(Boolean);
 
 export default function CTASection() {
   return (
@@ -74,108 +82,31 @@ export default function CTASection() {
               </div>
             </div>
 
-            {/* Columna derecha: FORM arriba + CARD abajo */}
-            <div className="grid content-start gap-4 md:grid-rows-[auto,1fr]">
-              {/* Formulario compacto */}
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  // aquí puedes manejar el submit (fetch/axios/email/etc.)
-                }}
-                className="relative rounded-2xl border border-white/10 bg-black/20 p-5 md:p-6"
-              >
-                <div className="pointer-events-none absolute inset-0 rounded-2xl bg-[radial-gradient(90%_60%_at_80%_-10%,rgba(229,9,20,.12),transparent_60%)]" />
-                <div className="relative">
+            {/* Columna derecha: contacto directo (el único formulario es el cotizador) */}
+            <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-black/20 p-6">
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(90%_60%_at_80%_-10%,rgba(229,9,20,.18),transparent_60%)]" />
+              <div className="relative space-y-4">
+                <h3 className="text-lg font-semibold">¿Prefieres hablar con nosotros?</h3>
+                <p className="text-sm text-zinc-300">
+                  Cuéntanos sobre tu obra. Te orientamos desde el primer minuto.
+                </p>
 
-
-                  <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
-                    <div className="col-span-1">
-                      <label className="mb-1 block text-xs text-zinc-300">Nombre</label>
-                      <input
-                        type="text"
-                        required
-                        placeholder="Tu nombre"
-                        className="w-full rounded-lg border border-white/15 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-white/50 outline-none transition focus:border-white/30"
-                      />
-                    </div>
-                    <div className="col-span-1">
-                      <label className="mb-1 block text-xs text-zinc-300">Correo</label>
-                      <input
-                        type="email"
-                        required
-                        placeholder="tucorreo@ejemplo.com"
-                        className="w-full rounded-lg border border-white/15 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-white/50 outline-none transition focus:border-white/30"
-                      />
-                    </div>
-                    <div className="col-span-1">
-                      <label className="mb-1 block text-xs text-zinc-300">Teléfono (opcional)</label>
-                      <input
-                        type="tel"
-                        placeholder="+52 ..."
-                        className="w-full rounded-lg border border-white/15 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-white/50 outline-none transition focus:border-white/30"
-                      />
-                    </div>
-                    <div className="col-span-1">
-                      <label className="mb-1 block text-xs text-zinc-300">Tipo de obra</label>
-                      <select
-                        className="w-full appearance-none rounded-lg border border-white/15 bg-white/10 px-3 py-2 text-sm text-white outline-none transition focus:border-white/30"
-                        defaultValue="Edificación"
-                      >
-                        <option className="bg-[#0B0E0C]" value="Edificación">Edificación</option>
-                        <option className="bg-[#0B0E0C]" value="Urbanización">Urbanización</option>
-                        <option className="bg-[#0B0E0C]" value="Energía">Energía</option>
-                        <option className="bg-[#0B0E0C]" value="Naves industriales">Naves industriales</option>
-                      </select>
-                    </div>
-                    <div className="sm:col-span-2">
-                      <label className="mb-1 block text-xs text-zinc-300">Mensaje</label>
-                      <textarea
-                        rows={3}
-                        placeholder="Describe brevemente tu proyecto…"
-                        className="w-full resize-none rounded-lg border border-white/15 bg-white/10 px-3 py-2 text-sm text-white placeholder:text-white/50 outline-none transition focus:border-white/30"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="mt-4">
-                    <button
-                      type="submit"
-                      className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-[#E50914] px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-[#cf0711]"
-                    >
-                      Enviar solicitud
-                      <ArrowRight size={16} weight="bold" />
-                    </button>
-                  </div>
-                </div>
-              </form>
-
-              {/* Tarjeta de contacto rápida */}
-              <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-black/20 p-6">
-                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(90%_60%_at_80%_-10%,rgba(229,9,20,.18),transparent_60%)]" />
-                <div className="relative space-y-4">
-                  <h3 className="text-lg font-semibold">¿Prefieres hablar con nosotros?</h3>
-                  <p className="text-sm text-zinc-300">
-                    Agenda una llamada y cuéntanos sobre tu obra. Te orientamos desde el primer minuto.
-                  </p>
-
+                {canales.length > 0 && (
                   <div className="mt-3 grid gap-3 sm:grid-cols-2">
-                    <a
-                      href="tel:+520000000000"
-                      className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm font-medium text-white transition hover:bg-white/10"
-                    >
-                      <Phone size={18} /> Llamar
-                    </a>
-                    <a
-                      href="mailto:contacto@tu-dominio.com"
-                      className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm font-medium text-white transition hover:bg-white/10"
-                    >
-                      <EnvelopeSimple size={18} /> Escribir
-                    </a>
+                    {canales.map(({ label, href, Icon }) => (
+                      <a
+                        key={href}
+                        href={href}
+                        className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm font-medium text-white transition hover:bg-white/10"
+                      >
+                        <Icon size={18} /> {label}
+                      </a>
+                    ))}
                   </div>
+                )}
 
-                  <div className="pt-2 text-xs text-zinc-400">
-                    Respuesta en menos de 24h. Sin compromiso.
-                  </div>
+                <div className="pt-2 text-xs text-zinc-400">
+                  Respuesta de un ingeniero en menos de 24 h. Sin compromiso.
                 </div>
               </div>
             </div>

@@ -13,18 +13,22 @@ const GRADS = [
 const values = [
   {
     title: "Fabricamos nuestros propios insumos",
+    desc: "Control de calidad y precio desde el origen, sin depender de terceros.",
     icon: <Factory size={28} weight="duotone" className="text-red-500" />,
   },
   {
     title: "Usamos nuestra propia maquinaria",
+    desc: "Disponibilidad inmediata y sin costos de renta.",
     icon: <Crane size={28} weight="duotone" className="text-red-500" />,
   },
   {
     title: "Construimos con nuestros colaboradores",
+    desc: "Misma cuadrilla de principio a fin, responsabilidad directa.",
     icon: <UsersThree size={28} weight="duotone" className="text-red-500" />,
   },
   {
     title: "Reinvertimos el 60% en desarrollo social",
+    desc: "Cada obra impulsa programas sociales en las comunidades donde trabajamos.",
     icon: <Heart size={28} weight="duotone" className="text-red-500" />,
   },
 ];
@@ -86,9 +90,7 @@ export default function ValuesGrid() {
 
                 {/* base/foot con divisoria sutil */}
                 <div className="mt-3 h-px w-12 bg-white/20" />
-                <p className="text-xs text-white/80">
-                  Eficiencia, control y trazabilidad desde el origen.
-                </p>
+                <p className="text-xs text-white/80">{val.desc}</p>
               </div>
 
               {/* glow exterior al hover */}
