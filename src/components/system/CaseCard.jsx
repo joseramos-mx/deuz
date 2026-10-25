@@ -87,7 +87,7 @@ export default function CaseCard({ proyecto, href, priority = false, className }
         </h3>
 
         {metricas.length > 0 && (
-          <dl className="mt-auto grid grid-cols-2 gap-px border border-deuz-line bg-deuz-line">
+          <dl className="mt-auto grid grid-cols-2 gap-px border border-deuz-line bg-deuz-line [&>*:last-child:nth-child(odd)]:col-span-2">
             {metricas.map((m) => (
               <div key={m.k} className="bg-deuz-elev p-3">
                 <dt className="font-mono text-[10px] uppercase tracking-[0.14em] text-deuz-dim">{m.k}</dt>

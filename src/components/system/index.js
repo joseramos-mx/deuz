@@ -7,3 +7,5 @@ export { default as CaseCard } from "./CaseCard";
 export { default as CTAButton } from "./CTAButton";
 export { default as SpotlightCard } from "./SpotlightCard";
 export { default as ScrambleText } from "./ScrambleText";
+export { default as SectionHeading, container, section } from "./SectionHeading";
+export { default as MexicoMap } from "./MexicoMap";

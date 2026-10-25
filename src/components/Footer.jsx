@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { soluciones, navPrincipal, ctaCotizar, navLegal } from "@/data/navegacion";
 import { contacto, redes } from "@/data/contacto";
-import { CTAButton, GridBackground, TechLabel } from "@/components/system";
+import { GridBackground, TechLabel } from "@/components/system";
 import CurrentYear from "@/components/CurrentYear";
 
 const linkCls = "text-sm text-deuz-muted transition-colors hover:text-white";
@@ -29,19 +29,6 @@ export default function Footer() {
       <GridBackground className="-z-10" />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
-        {/* Cierre */}
-        <div className="flex flex-col gap-8 border-b border-deuz-line py-14 md:flex-row md:items-end md:justify-between md:py-20">
-          <div>
-            <TechLabel>Grupo empresarial · {contacto.ciudad}</TechLabel>
-            <p className="mt-5 max-w-xl text-3xl font-medium leading-[1.05] tracking-tight md:text-5xl">
-              Elevemos tu proyecto con propósito.
-            </p>
-          </div>
-          <CTAButton href={ctaCotizar.href} size="lg" className="self-start md:self-auto">
-            {ctaCotizar.label}
-          </CTAButton>
-        </div>
-
         {/* Navegación */}
         <div className="grid grid-cols-2 gap-x-6 gap-y-12 py-14 md:grid-cols-12">
           <div className="col-span-2 md:col-span-4">

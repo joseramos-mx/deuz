@@ -6,29 +6,29 @@ export const soluciones = [
   {
     label: "Vivienda y desarrollo",
     descripcion: "Casas habitación, edificación vertical y urbanización.",
-    href: "/#servicios", // → /soluciones/vivienda
+    href: "/#soluciones", // → /soluciones/vivienda
   },
   {
     label: "Naves e industria",
     descripcion: "Naves industriales, losas y suministro de materiales.",
-    href: "/#servicios", // → /soluciones/industrial
+    href: "/#soluciones", // → /soluciones/industrial
   },
   {
     label: "Infraestructura y obra pública",
     descripcion: "Vialidades, pavimentos, urbanización y maquinaria pesada.",
-    href: "/#servicios", // → /soluciones/infraestructura
+    href: "/#soluciones", // → /soluciones/infraestructura
   },
   {
     label: "Energía y electrificación",
     descripcion: "Media y baja tensión, líneas y alumbrado.",
-    href: "/#servicios", // → /soluciones/energia
+    href: "/#soluciones", // → /soluciones/energia
   },
 ];
 
 export const navPrincipal = [
   { label: "Proyectos", href: "/#proyectos" }, // → /proyectos
-  { label: "Grupo", href: "/#nosotros" }, // → /grupo
-  { label: "Respaldo", href: "/respaldo" },
+  { label: "Grupo", href: "/#grupo" }, // → /grupo
+  { label: "Respaldo", href: "/#respaldo" }, // → /respaldo
   { label: "Contacto", href: "/#contacto" }, // → /contacto
 ];
 

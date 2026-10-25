@@ -7,7 +7,9 @@ import { usePathname } from "next/navigation";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { soluciones, navPrincipal, ctaCotizar } from "@/data/navegacion";
-import { CTAButton, GridBackground, TechLabel } from "@/components/system";
+import CTAButton from "@/components/system/CTAButton";
+import GridBackground from "@/components/system/GridBackground";
+import TechLabel from "@/components/system/TechLabel";
 
 const navBtn =
   "inline-flex h-9 items-center gap-1.5 rounded-[2px] bg-deuz-elev-2 px-4 text-[13px] font-medium text-deuz-text transition-colors duration-200 hover:bg-[#2A2A2A] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white";

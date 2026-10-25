@@ -35,12 +35,12 @@ export default function CTAButton({
   const content = (
     <>
       <span className="relative block overflow-hidden">
-        <span className="block transition-transform duration-300 ease-out group-hover:-translate-y-full">
+        <span className="flex items-center gap-2 transition-transform duration-300 ease-out group-hover:-translate-y-full">
           {children}
         </span>
         <span
           aria-hidden
-          className="absolute inset-0 block translate-y-full transition-transform duration-300 ease-out group-hover:translate-y-0"
+          className="absolute inset-0 flex items-center gap-2 translate-y-full transition-transform duration-300 ease-out group-hover:translate-y-0"
         >
           {children}
         </span>
